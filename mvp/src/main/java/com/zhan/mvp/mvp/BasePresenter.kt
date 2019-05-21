@@ -8,24 +8,26 @@ import java.lang.ref.WeakReference
  *  @date:   2019/5/16
  *  @desc:   TODO
  */
-class BasePresenter<V : BaseContract.View>(view: V) : BaseContract.Presenter {
-
-    init {
-        attachView(view)
-    }
+abstract class BasePresenter<V : BaseContract.View, M : BaseContract.Model>(view: V, model: M) : BaseContract.Presenter {
 
     // View 接口类型的弱引用
-    private lateinit var mViewRef: Reference<V>
+    private var mViewRef = WeakReference<V>(view)
 
-    protected fun isViewAttach(): Boolean {
-        return mViewRef.get() != null
+    private var mModelRef =  WeakReference<M>(model)
+
+    fun getView(): V? {
+        return mViewRef.get()
     }
 
-    private fun attachView(view: V) {
-        mViewRef = WeakReference<V>(view)
+    fun getModel(): M? {
+        return mModelRef.get()
     }
 
     override fun detachView() {
         mViewRef.clear()
+    }
+
+    override fun detachModel() {
+        mModelRef.clear()
     }
 }

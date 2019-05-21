@@ -7,5 +7,5 @@ package com.zhan.mvp.config
  */
 object API {
 
-    const val BASE_URL = ""
+    const val BASE_URL = "http://baidu.com"
 }

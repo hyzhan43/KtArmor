@@ -32,8 +32,10 @@ dependencies {
     // kotlin
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+
     // support
     api "com.android.support:appcompat-v7:$support_version"
+    api "com.android.support:design:$support_version"
 
     // RxKotlin and RxAndroid 2.x
     api "io.reactivex.rxjava2:rxkotlin:$rx_kotlin_version"

@@ -17,6 +17,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
         initBefore()
         initView()
+        initListener()
         initData()
     }
 
@@ -25,6 +26,8 @@ abstract class BaseActivity : AppCompatActivity() {
     open fun initBefore() {}
 
     open fun initView() {}
+
+    open fun initListener() {}
 
     open fun initData() {}
 }
