@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <Button
+        android:id="@+id/btnClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
@@ -14,5 +15,16 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnClick2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello!" />
+
+    <com.zhan.mvp.widget.loading.EmptyView
+        android:id="@+id/mEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </android.support.constraint.ConstraintLayout>
