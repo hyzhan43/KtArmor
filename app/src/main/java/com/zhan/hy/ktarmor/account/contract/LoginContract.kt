@@ -10,13 +10,11 @@ import com.zhan.mvp.mvp.BaseContract
 interface LoginContract {
 
     interface View : BaseContract.View {
+        fun accountEmpty(msg: Int)
+        fun passwordEmpty(msg: Int)
     }
 
     interface Presenter : BaseContract.Presenter {
         fun login(account: String, password: String)
-    }
-
-    interface Model : BaseContract.Model {
-        fun login(account: String, password: String, callback: (String, Boolean) -> Unit)
     }
 }

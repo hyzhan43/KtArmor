@@ -10,9 +10,19 @@ import com.zhan.mvp.common.Preference
  */
 interface ApplicationDelegate {
 
+
+
     fun initKtArmor(context: Context) {
 
         // 初始化 SharePreference
         Preference.init(context)
+    }
+
+    fun addBaseUrl(baseUrl: String){
+
+    }
+
+    fun getSetting(){
+
     }
 }

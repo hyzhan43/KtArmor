@@ -13,10 +13,10 @@ import android.support.v4.content.ContextCompat
  *  @desc:   TODO
  */
 // R.color.xxx  -> @ColorInt
-fun Context.toColor(@ColorRes res: Int): Int {
+fun Context.getColorRef(@ColorRes res: Int): Int {
     return ContextCompat.getColor(this, res)
 }
 
-fun Context.toDrawable(@DrawableRes res: Int): Drawable? {
+fun Context.getDrawableRef(@DrawableRes res: Int): Drawable? {
     return ContextCompat.getDrawable(this, res)
 }

@@ -22,7 +22,6 @@ interface BaseContract {
 
     interface Presenter {
         fun detachView()
-        fun detachModel()
     }
 
     interface Model {

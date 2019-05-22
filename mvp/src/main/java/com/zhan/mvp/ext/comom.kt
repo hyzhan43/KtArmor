@@ -3,6 +3,7 @@ package com.zhan.mvp.ext
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 
 /**
  *  @author: hyzhan
@@ -12,4 +13,9 @@ import android.content.Intent
 inline fun <reified T: Activity> Context.startActivity() {
     val intent = Intent(this, T::class.java)
     this.startActivity(intent)
+}
+
+
+fun Context.log(message: String) {
+    Log.d(this.javaClass.name, message)
 }

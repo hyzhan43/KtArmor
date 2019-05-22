@@ -22,7 +22,19 @@ class LoginActivity : MvpActivity<LoginContract.Presenter>(), LoginContract.View
         super.initListener()
 
         mBtnLogin.setOnClickListener {
+            mTilAccount.isErrorEnabled = false
+            mTilPassword.isErrorEnabled = false
             mPresenter.login(mEtAccount.str(), mEtPassword.str())
         }
+    }
+
+    override fun accountEmpty(msg: Int) {
+        mTilAccount.isErrorEnabled = true
+        mTilAccount.error = getString(msg)
+    }
+
+    override fun passwordEmpty(msg: Int) {
+        mTilPassword.isErrorEnabled = true
+        mTilPassword.error = getString(msg)
     }
 }

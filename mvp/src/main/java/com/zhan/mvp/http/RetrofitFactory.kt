@@ -1,11 +1,11 @@
 package com.zhan.mvp.http
 
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.zhan.mvp.config.API
+import com.zhan.mvp.base.delegate.KtArmor
 import com.zhan.mvp.config.Setting
 import com.zhan.mvp.http.intercept.LoggingIntercept
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
@@ -22,9 +22,9 @@ class RetrofitFactory private constructor() {
 
     private val retrofit: Retrofit by lazy {
         Retrofit.Builder()
-                .baseUrl(API.BASE_URL)
+                .baseUrl(KtArmor.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(CoroutineCallAdapterFactory())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(initOkHttpClient())
                 .build()
     }
