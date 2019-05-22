@@ -1,5 +1,7 @@
 package com.zhan.hy.ktarmor.account.contract
 
+import com.zhan.hy.ktarmor.account.model.response.LoginRsp
+import com.zhan.mvp.data.BaseResponse
 import com.zhan.mvp.mvp.BaseContract
 
 /**
@@ -16,5 +18,9 @@ interface LoginContract {
 
     interface Presenter : BaseContract.Presenter {
         fun login(account: String, password: String)
+    }
+
+    interface Model : BaseContract.Model {
+        fun login(account: String, password: String, sCallback: (BaseResponse<LoginRsp>) -> Unit)
     }
 }

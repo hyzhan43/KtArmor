@@ -13,7 +13,10 @@ import com.zhan.mvp.mvp.BasePresenter
  *  @date:   2019/5/21
  *  @desc:   TODO
  */
-class LoginPresenter(view: LoginContract.View) : BasePresenter<LoginContract.View>(view), LoginContract.Presenter {
+class LoginPresenter<V : LoginContract.View>(view: V) : BasePresenter<V, LoginContract.Model>(view),
+        LoginContract.Presenter {
+
+    override fun bindModel(): LoginContract.Model = LoginModel(this)
 
     override fun login(account: String, password: String) {
 
@@ -27,10 +30,9 @@ class LoginPresenter(view: LoginContract.View) : BasePresenter<LoginContract.Vie
             return
         }
 
-        LoginModel.login(account, password, {
+        getView()?.showLoading()
+        mModel.login(account, password) {
             Log.d("LST", "loginRsp = $it")
-        }, {
-
-        })
+        }
     }
 }

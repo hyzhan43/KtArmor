@@ -21,9 +21,14 @@ interface BaseContract {
     }
 
     interface Presenter {
+        fun showError(@StringRes res: Int)
+
+        fun showError(message: String)
+
         fun detachView()
     }
 
     interface Model {
+        fun detachPresenter()
     }
 }

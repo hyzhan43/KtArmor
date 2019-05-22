@@ -30,11 +30,13 @@ class LoginActivity : MvpActivity<LoginContract.Presenter>(), LoginContract.View
 
     override fun accountEmpty(msg: Int) {
         mTilAccount.isErrorEnabled = true
+        mTilAccount.requestFocus()
         mTilAccount.error = getString(msg)
     }
 
     override fun passwordEmpty(msg: Int) {
         mTilPassword.isErrorEnabled = true
+        mTilPassword.requestFocus()
         mTilPassword.error = getString(msg)
     }
 }

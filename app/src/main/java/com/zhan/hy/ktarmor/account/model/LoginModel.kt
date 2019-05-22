@@ -1,5 +1,6 @@
 package com.zhan.hy.ktarmor.account.model
 
+import com.zhan.hy.ktarmor.account.contract.LoginContract
 import com.zhan.hy.ktarmor.account.model.response.LoginRsp
 import com.zhan.hy.ktarmor.common.ApiModel
 import com.zhan.mvp.data.BaseResponse
@@ -11,10 +12,10 @@ import com.zhan.mvp.http.BaseObserver
  *  @date:   2019/5/21
  *  @desc:   TODO
  */
-object LoginModel : ApiModel() {
+class LoginModel<T : LoginContract.Presenter>(presenter: T) : ApiModel<T>(presenter), LoginContract.Model {
 
-    fun login(account: String, password: String, sCallback: (BaseResponse<LoginRsp>) -> Unit, fCallback: (String) -> Unit) {
+    override fun login(account: String, password: String, sCallback: (BaseResponse<LoginRsp>) -> Unit) {
         apiService.login(account, password)
-                .execute(BaseObserver(sCallback, fCallback))
+                .execute(BaseObserver(sCallback, this))
     }
 }
