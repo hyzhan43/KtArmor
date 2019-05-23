@@ -5,6 +5,7 @@ import android.util.Log
 import com.zhan.hy.ktarmor.R
 import com.zhan.hy.ktarmor.account.contract.LoginContract
 import com.zhan.hy.ktarmor.account.model.LoginModel
+import com.zhan.mvp.ext.showLog
 import com.zhan.mvp.http.KCallback
 import com.zhan.mvp.mvp.BasePresenter
 
@@ -32,7 +33,13 @@ class LoginPresenter<V : LoginContract.View>(view: V) : BasePresenter<V, LoginCo
 
         getView()?.showLoading()
         mModel.login(account, password) {
-            Log.d("LST", "loginRsp = $it")
+            it.errorMsg.showLog()
         }
+
+        mModel.login(account, password, {
+            // TODO service
+        },{
+            // TODO error
+        })
     }
 }

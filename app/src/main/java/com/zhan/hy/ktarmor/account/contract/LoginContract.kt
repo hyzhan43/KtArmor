@@ -22,5 +22,7 @@ interface LoginContract {
 
     interface Model : BaseContract.Model {
         fun login(account: String, password: String, sCallback: (BaseResponse<LoginRsp>) -> Unit)
+
+        fun login(account: String, password: String, sCallback: (BaseResponse<LoginRsp>) -> Unit, fCallback: (String) -> Unit)
     }
 }

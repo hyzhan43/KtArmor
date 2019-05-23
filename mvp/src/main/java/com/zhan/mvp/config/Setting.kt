@@ -14,6 +14,8 @@ object Setting {
     // 连接超时
     const val CONNECT_TIME_OUT = 5L
 
-    // 请求成功
+    // 请求成功状态码
     const val SUCCESS = 0
+
+    const val UNKNOWN_ERROR = "未知异常"
 }

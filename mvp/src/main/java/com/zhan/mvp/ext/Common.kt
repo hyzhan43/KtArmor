@@ -10,7 +10,7 @@ import android.util.Log
  *  @date:   2019/5/21
  *  @desc:   TODO
  */
-inline fun <reified T: Activity> Context.startActivity() {
+inline fun <reified T : Activity> Context.startActivity() {
     val intent = Intent(this, T::class.java)
     this.startActivity(intent)
 }
@@ -18,4 +18,10 @@ inline fun <reified T: Activity> Context.startActivity() {
 
 fun Context.log(message: String) {
     Log.d(this.javaClass.name, message)
+}
+
+fun String.showLog() {
+    Log.d(this.javaClass.name, "<------------------------------")
+    Log.d(this.javaClass.name, "${this.javaClass.name}:  $this")
+    Log.d(this.javaClass.name, "------------------------------->")
 }

@@ -18,4 +18,10 @@ class LoginModel<T : LoginContract.Presenter>(presenter: T) : ApiModel<T>(presen
         apiService.login(account, password)
                 .execute(BaseObserver(sCallback, this))
     }
+
+    override fun login(account: String, password: String,
+                       sCallback: (BaseResponse<LoginRsp>) -> Unit,
+                       fCallback: (String) -> Unit) {
+
+    }
 }

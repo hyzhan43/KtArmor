@@ -19,6 +19,11 @@ class BaseApplication : Application(), ApplicationDelegate {
         KtArmor.build {
             context = applicationContext
             baseUrl = API.BASE_URL
+
+//             选择配置
+//            readTime = 20L
+//            writeTime = 30L
+//            connectTime = 5L
         }
     }
 }
