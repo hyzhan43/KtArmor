@@ -1,7 +1,6 @@
-package com.zhan.mvp.base.delegate
+package com.zhan.mvp
 
 import android.content.Context
-import android.util.Log
 import com.zhan.mvp.common.Preference
 import com.zhan.mvp.config.Setting
 

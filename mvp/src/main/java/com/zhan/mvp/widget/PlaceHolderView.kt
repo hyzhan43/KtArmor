@@ -1,4 +1,4 @@
-package com.zhan.mvp.widget.loading
+package com.zhan.mvp.widget
 
 import android.support.annotation.StringRes
 

@@ -1,7 +1,6 @@
 package com.zhan.mvp.http
 
-import com.zhan.mvp.base.delegate.KtArmor
-import com.zhan.mvp.config.Setting
+import com.zhan.mvp.KtArmor
 import com.zhan.mvp.http.intercept.LoggingIntercept
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

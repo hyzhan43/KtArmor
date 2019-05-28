@@ -13,7 +13,7 @@ buildscript {
     ext.coroutines_core_version = '1.2.1'
     ext.okhttp_version = '3.4.1'
     
-    ext.logger_version = '2.2.0'
+    ext.brvah_version = '2.9.42'
 
     repositories {
         google()
@@ -32,6 +32,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url "https://jitpack.io" }
     }
 }
 

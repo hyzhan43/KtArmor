@@ -1,12 +1,10 @@
 package com.zhan.hy.ktarmor.account.presenter
 
 import android.text.TextUtils
-import android.util.Log
 import com.zhan.hy.ktarmor.R
 import com.zhan.hy.ktarmor.account.contract.LoginContract
 import com.zhan.hy.ktarmor.account.model.LoginModel
 import com.zhan.mvp.ext.showLog
-import com.zhan.mvp.http.KCallback
 import com.zhan.mvp.mvp.BasePresenter
 
 /**
@@ -36,10 +34,11 @@ class LoginPresenter<V : LoginContract.View>(view: V) : BasePresenter<V, LoginCo
             it.errorMsg.showLog()
         }
 
-        mModel.login(account, password, {
-            // TODO service
-        },{
-            // TODO error
-        })
+        // 第二种方式
+//        mModel.login(account, password, {
+//            // TODO service
+//        },{
+//            // TODO error
+//        })
     }
 }

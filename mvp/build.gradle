@@ -50,5 +50,6 @@ dependencies {
     api "com.squareup.okhttp3:okhttp:${okhttp_version}"
     api "com.squareup.okhttp3:logging-interceptor:${okhttp_version}"
 
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_core_version"
+    // recyclerAdapter helper
+    api "com.github.CymChad:BaseRecyclerViewAdapterHelper:$brvah_version"
 }

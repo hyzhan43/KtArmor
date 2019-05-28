@@ -1,8 +1,7 @@
-package com.zhan.mvp.widget.loading
+package com.zhan.mvp.widget
 
 import android.content.Context
 import android.graphics.Color
-import android.graphics.PorterDuff
 import android.support.annotation.StringRes
 import android.util.AttributeSet
 import android.view.View
@@ -27,7 +26,9 @@ class EmptyView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
 
     var loadingColor = 0
         set(color) {
-            mPbLoading.indeterminateDrawable.setColorFilter(color, PorterDuff.Mode.MULTIPLY)
+            field = color
+            loading.innerColor = color
+            loading.outerColor = color
         }
 
     var emptyText: String? = null
@@ -84,7 +85,8 @@ class EmptyView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
 
 
     override fun triggerEmpty() {
-        mPbLoading.visibility = View.GONE
+        loading.visibility = View.GONE
+        loading.stop()
         mIvImage.setImageResource(emptyDrawable)
         mTvTips.text = emptyText
 
@@ -93,8 +95,8 @@ class EmptyView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
     }
 
     override fun triggerNetError() {
-
-        mPbLoading.visibility = View.GONE
+        loading.visibility = View.GONE
+        loading.stop()
         mIvImage.setImageResource(errorDrawable)
         mTvTips.text = errorText
 
@@ -119,7 +121,8 @@ class EmptyView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
 
     override fun triggerLoading() {
         mIvImage.visibility = View.GONE
-        mPbLoading.visibility = View.VISIBLE
+        loading.visibility = View.VISIBLE
+        loading.start()
         mTvTips.text = loadingText
 
         this.visibility = View.VISIBLE

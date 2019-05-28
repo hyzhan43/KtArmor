@@ -12,10 +12,15 @@
         android:layout_height="wrap_content"
         android:text="@string/login_example" />
 
-    <com.zhan.mvp.widget.loading.EmptyView
-        android:id="@+id/mEmpty"
-        android:layout_width="match_parent"
+    <com.zhan.mvp.widget.LoadingView
+        android:id="@+id/mLoading"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone" />
+        android:layout_gravity="center" />
+
+    <com.zhan.mvp.widget.EmptyView
+        android:id="@+id/emptyView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

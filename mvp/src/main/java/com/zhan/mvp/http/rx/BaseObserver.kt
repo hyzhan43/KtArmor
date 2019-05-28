@@ -1,4 +1,4 @@
-package com.zhan.mvp.http
+package com.zhan.mvp.http.rx
 
 import com.zhan.mvp.config.Setting
 import com.zhan.mvp.data.BaseResponse

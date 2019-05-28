@@ -17,5 +17,13 @@ class MainActivity : AppCompatActivity() {
         btnLogin.setOnClickListener {
             startActivity<LoginActivity>()
         }
+
+        mLoading.setOnClickListener {
+            mLoading.start()
+        }
+
+        emptyView.setOnClickListener {
+            emptyView.triggerLoading()
+        }
     }
 }
