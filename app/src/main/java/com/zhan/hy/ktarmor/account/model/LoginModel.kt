@@ -12,7 +12,7 @@ import com.zhan.mvp.http.rx.BaseObserver
  *  @date:   2019/5/21
  *  @desc:   TODO
  */
-class LoginModel<T : LoginContract.Presenter>(presenter: T) : ApiModel<T>(presenter), LoginContract.Model {
+class LoginModel(presenter: LoginContract.Presenter) : ApiModel<LoginContract.Presenter>(presenter), LoginContract.Model {
 
     override fun login(account: String, password: String, sCallback: (BaseResponse<LoginRsp>) -> Unit) {
         apiService.login(account, password)

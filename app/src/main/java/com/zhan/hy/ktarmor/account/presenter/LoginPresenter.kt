@@ -12,7 +12,7 @@ import com.zhan.mvp.mvp.BasePresenter
  *  @date:   2019/5/21
  *  @desc:   TODO
  */
-class LoginPresenter<V : LoginContract.View>(view: V) : BasePresenter<V, LoginContract.Model>(view),
+class LoginPresenter(view: LoginContract.View) : BasePresenter<LoginContract.View, LoginContract.Model>(view),
         LoginContract.Presenter {
 
     override fun bindModel(): LoginContract.Model = LoginModel(this)
