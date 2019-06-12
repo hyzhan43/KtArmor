@@ -15,8 +15,4 @@ interface ArticleContract {
     interface View : BaseContract.View {
 
     }
-
-    interface Model : BaseContract.Model {
-
-    }
 }

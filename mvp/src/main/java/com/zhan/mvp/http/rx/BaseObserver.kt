@@ -3,29 +3,29 @@ package com.zhan.mvp.http.rx
 import com.zhan.mvp.config.Setting
 import com.zhan.mvp.data.BaseResponse
 import com.zhan.mvp.ext.showLog
-import com.zhan.mvp.mvp.BaseModel
+import com.zhan.mvp.mvp.BasePresenter
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 
 /**
  *  @author: hyzhan
- *  @date:   2019/5/22
+ *  @date:   2019/6/12
  *  @desc:   TODO
  */
-class BaseObserver<T : BaseResponse<*>>(private val sCallback: (T) -> Unit,
-                                        private val model: BaseModel<*>,
-                                        private val fCallback: ((String) -> Unit)? = null) : Observer<T> {
+class BaseObserver<R, T : BaseResponse<R>>(val presenter: BasePresenter<*>,
+                                           private val onSuccess: (R) -> Unit,
+                                           private val onFail: ((String) -> Unit)? = null) : Observer<T> {
 
     override fun onNext(response: T) {
         // 如果请求成功则 返回成功的 response
         if (response.errorCode == Setting.SUCCESS) {
             // 请求成功回调
-            response.data?.let { sCallback.invoke(response) } ?: showError(response.errorMsg)
-        } else {
-            // 请求失败回调
-            showError(response.errorMsg)
+            response.data?.let { onSuccess.invoke(it) } ?: showError(response.errorMsg)
+            return
         }
 
+        // 请求失败回调
+        showError(response.errorMsg)
         response.errorMsg.showLog()
     }
 
@@ -37,16 +37,16 @@ class BaseObserver<T : BaseResponse<*>>(private val sCallback: (T) -> Unit,
     }
 
     override fun onSubscribe(disposable: Disposable) {
-        model.addSubscribe(disposable)
+        presenter.addSubscribe(disposable)
     }
 
     override fun onComplete() {}
 
     /**
-     *  fCallback -> 不为空, 返回错误信息, 可以自定义处理逻辑
-     *  否则调用 presenter 默认返回 显示 toast
+     *  如果onFail 不为null, 则回调 onFail
+     *  默认回调 view.showError() 也就是 Toast
      */
     private fun showError(message: String) {
-        fCallback?.invoke(message) ?: model.getPresenter()?.showError(message)
+        onFail?.invoke(message) ?: presenter.view?.showError(message)
     }
 }

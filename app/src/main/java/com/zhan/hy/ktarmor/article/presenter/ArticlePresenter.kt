@@ -9,8 +9,6 @@ import com.zhan.mvp.mvp.BasePresenter
  *  @date:   2019/6/6
  *  @desc:   TODO
  */
-class ArticlePresenter(view: ArticleContract.View) : BasePresenter<ArticleContract.View, ArticleContract.Model>(view),
+class ArticlePresenter(view: ArticleContract.View) : BasePresenter<ArticleContract.View>(view),
         ArticleContract.Presenter {
-
-    override fun bindModel(): ArticleContract.Model = ArticleModel(this)
 }

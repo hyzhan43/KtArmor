@@ -1,6 +1,9 @@
 package com.zhan.mvp.mvp
 
+import android.arch.lifecycle.LifecycleObserver
 import android.support.annotation.StringRes
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 import java.lang.ref.WeakReference
 
 /**
@@ -8,29 +11,22 @@ import java.lang.ref.WeakReference
  *  @date:   2019/5/16
  *  @desc:   TODO
  */
-abstract class BasePresenter<V : BaseContract.View, M : BaseContract.Model>(view: V) : BaseContract.Presenter {
+abstract class BasePresenter<V : BaseContract.View>(view: V) : BaseContract.Presenter, LifecycleObserver {
+
+    val view: V?
+        get() = mViewRef.get()
 
     // View 接口类型的弱引用
     private var mViewRef = WeakReference<V>(view)
 
-    val mModel: M by lazy { bindModel() }
+    private val mCompositeDisposable by lazy { CompositeDisposable() }
 
-    fun getView(): V? {
-        return mViewRef.get()
-    }
+    fun addSubscribe(disposable: Disposable) = mCompositeDisposable.add(disposable)
 
-    abstract fun bindModel(): M
-
-    override fun showError(@StringRes res: Int) {
-        getView()?.showError(res)
-    }
-
-    override fun showError(message: String) {
-        getView()?.showError(message)
-    }
+    private fun unSubscribe() = mCompositeDisposable.dispose()
 
     override fun detachView() {
         mViewRef.clear()
-        mModel.detachPresenter()
+        unSubscribe()
     }
 }

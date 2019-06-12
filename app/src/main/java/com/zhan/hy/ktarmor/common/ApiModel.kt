@@ -10,7 +10,7 @@ import com.zhan.mvp.mvp.BaseModel
  *  @date:   2019/5/21
  *  @desc:   TODO
  */
-abstract class ApiModel<P : BaseContract.Presenter>(model: P) : BaseModel<P>(model) {
+abstract class ApiModel: BaseModel() {
 
     val apiService by lazy {
         RetrofitFactory.newInstance.create(ApiService::class.java)

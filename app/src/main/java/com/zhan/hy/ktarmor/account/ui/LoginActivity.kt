@@ -2,7 +2,9 @@ package com.zhan.hy.ktarmor.account.ui
 
 import com.zhan.hy.ktarmor.R
 import com.zhan.hy.ktarmor.account.contract.LoginContract
+import com.zhan.hy.ktarmor.account.model.response.LoginRsp
 import com.zhan.hy.ktarmor.account.presenter.LoginPresenter
+import com.zhan.mvp.ext.Toasts.toast
 import com.zhan.mvp.ext.str
 import com.zhan.mvp.mvp.MvpActivity
 import kotlinx.android.synthetic.main.activity_login.*
@@ -38,5 +40,9 @@ class LoginActivity : MvpActivity<LoginContract.Presenter>(), LoginContract.View
         mTilPassword.isErrorEnabled = true
         mTilPassword.requestFocus()
         mTilPassword.error = getString(msg)
+    }
+
+    override fun loginSuc(loginRsp: LoginRsp) {
+        toast("登陆成功！")
     }
 }

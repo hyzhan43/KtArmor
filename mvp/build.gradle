@@ -41,6 +41,8 @@ dependencies {
     api "io.reactivex.rxjava2:rxkotlin:$rx_kotlin_version"
     api "io.reactivex.rxjava2:rxandroid:$rx_android_version"
 
+    api 'com.uber.autodispose:autodispose-android-archcomponents:1.0.0-RC2'
+
     // retrofit
     api "com.squareup.retrofit2:retrofit:$retrofit_version"
     api "com.squareup.retrofit2:converter-gson:${retrofit_version}"

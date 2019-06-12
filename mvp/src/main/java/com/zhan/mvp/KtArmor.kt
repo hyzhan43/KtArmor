@@ -3,6 +3,7 @@ package com.zhan.mvp
 import android.content.Context
 import com.zhan.mvp.common.Preference
 import com.zhan.mvp.config.Setting
+import com.zhan.mvp.ext.Toasts
 
 /**
  *  @author: hyzhan
@@ -30,5 +31,7 @@ object KtArmor {
 
         // 初始化 SharePreference
         Preference.init(context)
+        // 初始化 Toast
+        Toasts.init(context)
     }
 }

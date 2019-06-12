@@ -3,18 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.zhan.hy.ktarmor">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:allowBackup="true"
         android:name=".BaseApplication"
+        android:allowBackup="true"
+        android:appComponentFactory=""
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".article.ui.ArticleActivity">
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:appComponentFactory">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,9 +24,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".account.ui.LoginActivity"/>
-        <activity android:name=".LazyActivity"/>
-        <!--<activity android:name=".article.ui.ArticleActivity"/>-->
+        <activity android:name=".account.ui.LoginActivity" />
+        <activity android:name=".LazyActivity" />
+        <activity android:name=".article.ui.ArticleActivity" />
     </application>
 
 </manifest>

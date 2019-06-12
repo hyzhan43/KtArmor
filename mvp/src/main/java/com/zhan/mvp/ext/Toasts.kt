@@ -1,5 +1,6 @@
 package com.zhan.mvp.ext
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.support.annotation.StringRes
 import android.view.View
@@ -14,6 +15,15 @@ import android.widget.Toast
 object Toasts {
 
     private var mToast: Toast? = null
+
+    @SuppressLint("ShowToast")
+    fun init(context: Context) {
+        mToast = Toast.makeText(context, "", Toast.LENGTH_SHORT)
+    }
+
+    fun show(message: String) {
+        mToast?.apply { setText(message) }?.show()
+    }
 
     /**
      *  防止重复 toast 显示
