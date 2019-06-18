@@ -11,11 +11,11 @@ import com.zhan.mvp.ext.Toasts.toast
  */
 abstract class MvpActivity<P : BaseContract.Presenter> : BaseActivity(), BaseContract.View {
 
-    lateinit var mPresenter: P
+    lateinit var presenter: P
 
     override fun initBefore() {
         super.initBefore()
-        mPresenter = bindPresenter()
+        presenter = bindPresenter()
     }
 
     abstract fun bindPresenter(): P
@@ -34,6 +34,6 @@ abstract class MvpActivity<P : BaseContract.Presenter> : BaseActivity(), BaseCon
 
     override fun onDestroy() {
         super.onDestroy()
-        mPresenter.detachView()
+        presenter.detachView()
     }
 }

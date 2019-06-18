@@ -26,7 +26,7 @@ class LoginActivity : MvpActivity<LoginContract.Presenter>(), LoginContract.View
         mBtnLogin.setOnClickListener {
             mTilAccount.isErrorEnabled = false
             mTilPassword.isErrorEnabled = false
-            mPresenter.login(mEtAccount.str(), mEtPassword.str())
+            presenter.login(mEtAccount.str(), mEtPassword.str())
         }
     }
 

@@ -19,6 +19,7 @@ abstract class BasePresenter<V : BaseContract.View>(view: V) : BaseContract.Pres
     // View 接口类型的弱引用
     private var mViewRef = WeakReference<V>(view)
 
+    // 管理所有的网络请求
     private val mCompositeDisposable by lazy { CompositeDisposable() }
 
     fun addSubscribe(disposable: Disposable) = mCompositeDisposable.add(disposable)
