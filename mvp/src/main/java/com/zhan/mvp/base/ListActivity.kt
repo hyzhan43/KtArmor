@@ -13,15 +13,18 @@ import kotlinx.android.synthetic.main.activity_list.*
  *  @date:   2019/6/4
  *  @desc:   TODO
  */
-abstract class ListActivity<P : BaseContract.Presenter, T> : MvpActivity<P>() {
+abstract class ListActivity<P : BaseContract.Presenter, T, A : BaseQuickAdapter<T, *>> : MvpActivity<P>() {
+
+    // 当前页
+    var page = 0
+    /**
+     * 总数据
+     * 一定要设置！！！不然无法显示数据
+     * 一般在搜索结果返回后设置
+     */
+    var total = 0
 
     var refreshColor = R.color.refresh_color
-        set(value) {
-            field = refreshColor
-            mSrlRefresh.setColorSchemeResources(value)
-        }
-
-    val dataList by lazy { ArrayList<T>() }
 
     val adapter by lazy { bindAdapter() }
 
@@ -33,51 +36,38 @@ abstract class ListActivity<P : BaseContract.Presenter, T> : MvpActivity<P>() {
         // 初始化 SwipeRefreshLayout
         initRefresh()
 
-        // 初始化 RecyclerView
+        // 初始化 article
         initRecyclerView()
+    }
+
+    override fun initData() {
+        super.initData()
+
+        onRefreshData()
     }
 
     private fun initRefresh() {
         // 设置 下拉刷新 loading 颜色
-        mSrlRefresh.setColorSchemeResources(refreshColor)
-        mSrlRefresh.setOnRefreshListener { onRefreshData() }
+        srlRefresh.setColorSchemeResources(refreshColor)
+        srlRefresh.setOnRefreshListener {
+            page = 0
+            onRefreshData()
+        }
     }
 
     private fun initRecyclerView() {
-        mRvContent.layoutManager = LinearLayoutManager(this)
-        mRvContent.adapter = adapter
 
-        adapter.setEnableLoadMore(true)
+        rvContent.layoutManager = LinearLayoutManager(this)
+        rvContent.adapter = adapter
+
         // 上拉加载更多
-        adapter.setOnLoadMoreListener({ onLoadMoreData() }, mRvContent)
+        adapter.setOnLoadMoreListener({
+            ++page
+            onLoadMoreData()
+        }, rvContent)
     }
 
-    fun addData(newDataList: List<T>) {
-
-        // 如果为空的话，就直接 显示加载完毕
-        if (newDataList.isEmpty()) {
-            adapter.loadMoreEnd()
-            return
-        }
-
-        // 如果是 下拉刷新 直接设置数据
-        if (mSrlRefresh.isRefreshing) {
-            mSrlRefresh.isRefreshing = false
-            adapter.setNewData(newDataList)
-            adapter.loadMoreComplete()
-            return
-        }
-
-        // 否则 添加新数据
-        adapter.addData(newDataList)
-        adapter.loadMoreComplete()
-    }
-
-    /**
-     *  绑定 adapter
-     */
-    abstract fun bindAdapter(): BaseQuickAdapter<T, BaseViewHolder>
-
+    abstract fun bindAdapter(): A
     /**
      *  下拉刷新
      */
@@ -87,4 +77,43 @@ abstract class ListActivity<P : BaseContract.Presenter, T> : MvpActivity<P>() {
      *  上拉加载更多
      */
     abstract fun onLoadMoreData()
+
+    // 判断是否有更多数据
+    fun hasMore() = adapter.data.size < this.total
+
+    fun addData(newData: List<T>) {
+        if (srlRefresh.isRefreshing) {
+            srlRefresh.isRefreshing = false
+            adapter.setNewData(newData)
+            return
+        }
+
+        adapter.addData(newData)
+
+        if (!hasMore()) {
+            adapter.loadMoreEnd()
+        } else {
+            adapter.loadMoreComplete()
+        }
+    }
+
+    fun setMoreData(newData: List<T>) {
+        adapter.addData(newData)
+
+        if (!hasMore()) {
+            adapter.loadMoreEnd()
+        } else {
+            adapter.loadMoreComplete()
+        }
+    }
+
+    fun setNewData(newData: List<T>) {
+        if (srlRefresh.isRefreshing) {
+            srlRefresh.isRefreshing = false
+            adapter.run {
+                setNewData(newData)
+                loadMoreComplete()
+            }
+        }
+    }
 }

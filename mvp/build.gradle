@@ -34,24 +34,28 @@ dependencies {
 
 
     // support
+    String support_version = '28.0.0'
     api "com.android.support:appcompat-v7:$support_version"
     api "com.android.support:design:$support_version"
 
     // RxKotlin and RxAndroid 2.x
-    api "io.reactivex.rxjava2:rxkotlin:$rx_kotlin_version"
-    api "io.reactivex.rxjava2:rxandroid:$rx_android_version"
+    api 'io.reactivex.rxjava2:rxkotlin:2.3.0'
+    api 'io.reactivex.rxjava2:rxandroid:2.1.0'
 
-    api 'com.uber.autodispose:autodispose-android-archcomponents:1.0.0-RC2'
+    // RxPermission
+    api 'com.github.tbruyelle:rxpermissions:0.10.2'
 
     // retrofit
+    String retrofit_version = '2.4.0'
     api "com.squareup.retrofit2:retrofit:$retrofit_version"
     api "com.squareup.retrofit2:converter-gson:${retrofit_version}"
     api "com.squareup.retrofit2:adapter-rxjava2:${retrofit_version}"
 
     // okhttp
+    String okhttp_version = '3.4.1'
     api "com.squareup.okhttp3:okhttp:${okhttp_version}"
     api "com.squareup.okhttp3:logging-interceptor:${okhttp_version}"
 
     // recyclerAdapter helper
-    api "com.github.CymChad:BaseRecyclerViewAdapterHelper:$brvah_version"
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.42'
 }

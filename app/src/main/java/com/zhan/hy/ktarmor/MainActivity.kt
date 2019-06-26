@@ -3,6 +3,7 @@ package com.zhan.hy.ktarmor
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.zhan.hy.ktarmor.account.ui.LoginActivity
+import com.zhan.hy.ktarmor.article.ui.ArticleActivity
 import com.zhan.mvp.ext.startActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -16,6 +17,10 @@ class MainActivity : AppCompatActivity() {
 
         btnLogin.setOnClickListener {
             startActivity<LoginActivity>()
+        }
+
+        btnArticle.setOnClickListener {
+            startActivity<ArticleActivity>()
         }
 
         mLoading.setOnClickListener {
