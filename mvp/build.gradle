@@ -2,10 +2,9 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+
 android {
     compileSdkVersion 28
-
-
 
     defaultConfig {
         minSdkVersion 19
@@ -59,3 +58,4 @@ dependencies {
     // recyclerAdapter helper
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.42'
 }
+
