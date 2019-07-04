@@ -31,7 +31,6 @@ dependencies {
     // kotlin
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-
     // support
     String support_version = '28.0.0'
     api "com.android.support:appcompat-v7:$support_version"
@@ -43,6 +42,9 @@ dependencies {
 
     // RxPermission
     api 'com.github.tbruyelle:rxpermissions:0.10.2'
+
+    // Material Design 的颜色与布局大小
+    api 'net.qiujuer.genius:res:2.1.1'
 
     // retrofit
     String retrofit_version = '2.4.0'
@@ -56,6 +58,6 @@ dependencies {
     api "com.squareup.okhttp3:logging-interceptor:${okhttp_version}"
 
     // recyclerAdapter helper
-    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.42'
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
 }
 
