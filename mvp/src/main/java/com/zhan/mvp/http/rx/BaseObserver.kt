@@ -37,7 +37,7 @@ open class BaseObserver<R, T : BaseResponse<R>>(val presenter: BasePresenter<*>,
     }
 
     override fun onSubscribe(disposable: Disposable) {
-        presenter.addSubscribe(disposable)
+        // presenter.addSubscribe(disposable)
     }
 
     override fun onComplete() {}
