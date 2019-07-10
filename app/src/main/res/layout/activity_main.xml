@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
 
-    <com.zhan.mvp.widget.EmptyView
+    <com.zhan.mvp.widget.PlaceHolderView
         android:id="@+id/emptyView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         emptyView.setOnClickListener {
-            emptyView.triggerLoading()
+            emptyView.triggerNetError("Hello World")
         }
     }
 }

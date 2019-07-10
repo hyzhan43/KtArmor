@@ -1,9 +1,7 @@
 package com.zhan.mvp.mvp
 
 import android.arch.lifecycle.LifecycleObserver
-import android.support.annotation.StringRes
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
+import kotlinx.coroutines.*
 import java.lang.ref.WeakReference
 
 /**
@@ -17,17 +15,19 @@ abstract class BasePresenter<V : BaseContract.View>(view: V) : BaseContract.Pres
         get() = mViewRef.get()
 
     // View 接口类型的弱引用
-    private var mViewRef = WeakReference<V>(view)
+    private var mViewRef = WeakReference(view)
 
-    // 管理所有的网络请求
-    private val mCompositeDisposable by lazy { CompositeDisposable() }
+    private val presenterScope: CoroutineScope by lazy {
+        CoroutineScope(Dispatchers.Main + Job())
+    }
 
-    fun addSubscribe(disposable: Disposable) = mCompositeDisposable.add(disposable)
-
-    private fun unSubscribe() = mCompositeDisposable.dispose()
+    fun launchUI(block: suspend CoroutineScope.() -> Unit) {
+        presenterScope.launch { block() }
+    }
 
     override fun detachView() {
         mViewRef.clear()
-        unSubscribe()
+        // 取消掉 presenterScope创建的所有协程和其子协程。
+        presenterScope.cancel()
     }
 }

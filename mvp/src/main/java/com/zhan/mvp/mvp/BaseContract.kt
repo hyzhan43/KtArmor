@@ -11,9 +11,9 @@ import android.support.annotation.StringRes
 interface BaseContract {
 
     interface View {
-        fun showError(@StringRes str: Int)
+        fun showError(@StringRes msgRes: Int)
 
-        fun showError(str: String)
+        fun showError(msg: String)
 
         fun showLoading()
 

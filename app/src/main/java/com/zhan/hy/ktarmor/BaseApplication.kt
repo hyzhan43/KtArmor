@@ -2,6 +2,7 @@ package com.zhan.hy.ktarmor
 
 import android.app.Application
 import com.zhan.hy.ktarmor.common.api.API
+import com.zhan.hy.ktarmor.common.api.ApiService
 import com.zhan.mvp.KtArmor
 
 /**
@@ -15,6 +16,6 @@ class BaseApplication : Application(){
         super.onCreate()
 
         // 初始化KtArmor
-        KtArmor.init(this, API.BASE_URL)
+        KtArmor.init(this, MyRetrofitConfig())
     }
 }

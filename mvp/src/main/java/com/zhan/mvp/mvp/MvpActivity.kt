@@ -20,12 +20,13 @@ abstract class MvpActivity<P : BaseContract.Presenter> : BaseActivity(), BaseCon
 
     abstract fun bindPresenter(): P
 
-    override fun showError(@StringRes str: Int) {
-        toast(getString(str))
+    override fun showError(@StringRes msgRes: Int) {
+        showError(getString(msgRes))
     }
 
-    override fun showError(str: String) {
-        toast(str)
+    override fun showError(msg: String) {
+        toast(msg)
+        hideLoading()
     }
 
     override fun showLoading() {}

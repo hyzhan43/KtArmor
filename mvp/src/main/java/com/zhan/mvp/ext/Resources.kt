@@ -6,6 +6,7 @@ import android.support.annotation.ColorInt
 import android.support.annotation.ColorRes
 import android.support.annotation.DrawableRes
 import android.support.v4.content.ContextCompat
+import android.view.View
 
 /**
  *  @author: hyzhan
@@ -20,3 +21,12 @@ fun Context.getColorRef(@ColorRes res: Int): Int {
 fun Context.getDrawableRef(@DrawableRes res: Int): Drawable? {
     return ContextCompat.getDrawable(this, res)
 }
+
+fun View.getColorRef(@ColorRes res: Int): Int {
+    return ContextCompat.getColor(this.context, res)
+}
+
+fun View.getDrawableRef(@DrawableRes res: Int): Drawable? {
+    return ContextCompat.getDrawable(this.context, res)
+}
+

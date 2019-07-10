@@ -40,6 +40,11 @@ dependencies {
     api 'io.reactivex.rxjava2:rxkotlin:2.3.0'
     api 'io.reactivex.rxjava2:rxandroid:2.1.0'
 
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.2.1"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1"
+
+    api 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
+
     // RxPermission
     api 'com.github.tbruyelle:rxpermissions:0.10.2'
 
