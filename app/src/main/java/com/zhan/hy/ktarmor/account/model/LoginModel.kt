@@ -9,5 +9,5 @@ import com.zhan.hy.ktarmor.common.ApiModel
  */
 object LoginModel : ApiModel() {
 
-    fun login(account: String, password: String) = service.login(account, password)
+    fun login(account: String, password: String) = apiService.login(account, password)
 }

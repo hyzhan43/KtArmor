@@ -22,7 +22,7 @@ abstract class ListActivity<P : BaseContract.Presenter, T, A : BaseQuickAdapter<
      * 一定要设置！！！不然无法显示数据
      * 一般在搜索结果返回后设置
      */
-    var total = 0
+    abstract var total: Int
 
     var refreshColor = R.color.refresh_color
 
@@ -65,6 +65,7 @@ abstract class ListActivity<P : BaseContract.Presenter, T, A : BaseQuickAdapter<
             ++page
             onLoadMoreData()
         }, rvContent)
+
     }
 
     abstract fun bindAdapter(): A
@@ -85,6 +86,7 @@ abstract class ListActivity<P : BaseContract.Presenter, T, A : BaseQuickAdapter<
         if (srlRefresh.isRefreshing) {
             srlRefresh.isRefreshing = false
             adapter.setNewData(newData)
+            adapter.loadMoreComplete()
             return
         }
 
@@ -97,23 +99,23 @@ abstract class ListActivity<P : BaseContract.Presenter, T, A : BaseQuickAdapter<
         }
     }
 
-    fun setMoreData(newData: List<T>) {
-        adapter.addData(newData)
-
-        if (!hasMore()) {
-            adapter.loadMoreEnd()
-        } else {
-            adapter.loadMoreComplete()
-        }
-    }
-
-    fun setNewData(newData: List<T>) {
-        if (srlRefresh.isRefreshing) {
-            srlRefresh.isRefreshing = false
-            adapter.run {
-                setNewData(newData)
-                loadMoreComplete()
-            }
-        }
-    }
+//    fun setMoreData(newData: List<T>) {
+//        adapter.addData(newData)
+//
+//        if (!hasMore()) {
+//            adapter.loadMoreEnd()
+//        } else {
+//            adapter.loadMoreComplete()
+//        }
+//    }
+//
+//    fun setNewData(newData: List<T>) {
+//        if (srlRefresh.isRefreshing) {
+//            srlRefresh.isRefreshing = false
+//            adapter.run {
+//                setNewData(newData)
+//                loadMoreComplete()
+//            }
+//        }
+//    }
 }

@@ -92,7 +92,7 @@ class PlaceHolderView @JvmOverloads constructor(context: Context, attrs: Attribu
         loading.visibility = View.GONE
         loading.stop()
 
-        mIvImage.setImageResource(icon ?: emptyDrawable)
+        mIvImage.setImageResource(icon ?: defaultDrawable)
         mTvTips.text = msg ?: emptyText
 
         this.visibility = View.VISIBLE
@@ -106,7 +106,7 @@ class PlaceHolderView @JvmOverloads constructor(context: Context, attrs: Attribu
     fun triggerNetError(msg: String? = null, @DrawableRes icon: Int? = null) {
         loading.visibility = View.GONE
         loading.stop()
-        mIvImage.setImageResource(icon ?: errorDrawable)
+        mIvImage.setImageResource(icon ?: defaultDrawable)
         mTvTips.text = msg ?: errorText
 
         this.visibility = View.VISIBLE

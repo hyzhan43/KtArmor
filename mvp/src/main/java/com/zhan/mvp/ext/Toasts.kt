@@ -40,7 +40,7 @@ object Toasts {
         }
     }
 
-    fun Context.toast(message: Int) {
+    fun Context.toast(@StringRes message: Int) {
         toast(message.toString())
     }
 

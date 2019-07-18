@@ -11,7 +11,7 @@ import retrofit2.Retrofit
 class RetrofitFactory private constructor() {
 
     companion object {
-        val newInstance by lazy { RetrofitFactory() }
+        val instance by lazy { RetrofitFactory() }
     }
 
     private val retrofit: Retrofit by lazy {

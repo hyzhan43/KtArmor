@@ -1,10 +1,12 @@
 package com.zhan.hy.ktarmor.article.ui
 
+import android.os.Bundle
 import com.zhan.hy.ktarmor.article.ArticleContract
 import com.zhan.hy.ktarmor.article.model.ArticleAdapter
 import com.zhan.hy.ktarmor.article.model.data.ArticleData
 import com.zhan.hy.ktarmor.article.presenter.ArticlePresenter
 import com.zhan.mvp.base.ListActivity
+import com.zhan.mvp.ext.showLog
 
 
 /**
@@ -14,9 +16,21 @@ import com.zhan.mvp.base.ListActivity
  */
 class ArticleActivity : ListActivity<ArticleContract.Presenter, ArticleData, ArticleAdapter>(), ArticleContract.View {
 
+    override var total: Int = 0
+
     override fun bindPresenter(): ArticleContract.Presenter = ArticlePresenter(this)
 
     override fun bindAdapter() = ArticleAdapter()
+
+    override fun initArgs(bundle: Bundle?): Boolean {
+
+        bundle?.let {
+            it.getString("abc")?.showLog()
+            it.getString("bcd")?.showLog()
+        }
+
+        return super.initArgs(bundle)
+    }
 
     override fun onRefreshData() {
         val test = arrayListOf<ArticleData>()

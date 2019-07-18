@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnArticle.setOnClickListener {
-            startActivity<ArticleActivity>()
+            startActivity<ArticleActivity>("abc" to "看的见我吗", "bcd" to "看不见")
         }
 
         mLoading.setOnClickListener {

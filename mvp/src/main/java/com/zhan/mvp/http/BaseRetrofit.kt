@@ -1,5 +1,6 @@
 package com.zhan.mvp.http
 
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.zhan.mvp.KtArmor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -16,7 +17,8 @@ object BaseRetrofit {
         return Retrofit.Builder()
             .baseUrl(KtArmor.retrofit.baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
+//            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(KtArmor.retrofit.initOkHttpClient())
             .build()
     }

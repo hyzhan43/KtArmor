@@ -4,19 +4,24 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
+import android.os.Bundle
+import android.os.Parcelable
 import android.util.Log
 import android.util.TypedValue
+import com.zhan.mvp.utils.IntentUtils
+import java.io.Serializable
+import java.lang.Exception
 
 /**
  *  @author: hyzhan
  *  @date:   2019/5/21
  *  @desc:   TODO
  */
-inline fun <reified T : Activity> Context.startActivity() {
+inline fun <reified T : Activity> Context.startActivity(vararg params: Pair<String, Any?>) {
     val intent = Intent(this, T::class.java)
+    if (params.isNotEmpty()) IntentUtils.fillIntentArguments(intent, params)
     this.startActivity(intent)
 }
-
 
 fun Context.log(message: String) {
     Log.d(this.javaClass.name, message)
@@ -32,6 +37,7 @@ inline fun tryCatch(tryBlock: () -> Unit, catchBlock: (Throwable) -> Unit = {}) 
     try {
         tryBlock()
     } catch (t: Throwable) {
+        t.toString().showLog()
         catchBlock(t)
     }
 }

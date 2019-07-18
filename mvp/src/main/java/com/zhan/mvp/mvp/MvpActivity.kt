@@ -14,7 +14,6 @@ abstract class MvpActivity<P : BaseContract.Presenter> : BaseActivity(), BaseCon
     lateinit var presenter: P
 
     override fun initBefore() {
-        super.initBefore()
         presenter = bindPresenter()
     }
 
@@ -35,6 +34,9 @@ abstract class MvpActivity<P : BaseContract.Presenter> : BaseActivity(), BaseCon
 
     override fun onDestroy() {
         super.onDestroy()
-        presenter.detachView()
+
+        if (::presenter.isInitialized) {
+            presenter.detachView()
+        }
     }
 }

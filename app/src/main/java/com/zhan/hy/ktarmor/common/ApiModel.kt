@@ -1,6 +1,7 @@
 package com.zhan.hy.ktarmor.common
 
 import com.zhan.hy.ktarmor.common.api.ApiService
+import com.zhan.mvp.http.RetrofitFactory
 import com.zhan.mvp.mvp.BaseModel
 
 /**
@@ -10,6 +11,8 @@ import com.zhan.mvp.mvp.BaseModel
  */
 open class ApiModel: BaseModel<ApiService>() {
 
-    override fun bindService(): Class<ApiService> = ApiService::class.java
+    val apiService by lazy {
+        RetrofitFactory.instance.create(ApiService::class.java)
+    }
     
 }
