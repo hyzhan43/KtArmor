@@ -23,10 +23,13 @@ abstract class BaseFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initView()
+        initListener()
         initData()
     }
 
     open fun initView() {}
+
+    open fun initListener() {}
 
     open fun initData() {}
 }

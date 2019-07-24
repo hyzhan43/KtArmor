@@ -9,7 +9,7 @@ import kotlinx.coroutines.withContext
  *  @date:   2019/5/21
  *  @desc:   TODO
  */
-abstract class BaseModel<T> {
+abstract class BaseModel {
 
     suspend fun <R> launchIO(block: suspend CoroutineScope.() -> R) = withContext(Dispatchers.IO) {
         block()

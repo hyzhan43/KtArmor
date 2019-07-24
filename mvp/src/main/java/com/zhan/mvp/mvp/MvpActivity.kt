@@ -2,6 +2,7 @@ package com.zhan.mvp.mvp
 
 import android.support.annotation.StringRes
 import com.zhan.mvp.base.BaseActivity
+import com.zhan.mvp.base.ToolbarActivity
 import com.zhan.mvp.ext.Toasts.toast
 
 /**
@@ -9,7 +10,7 @@ import com.zhan.mvp.ext.Toasts.toast
  *  @date:   2019/5/16
  *  @desc:   TODO
  */
-abstract class MvpActivity<P : BaseContract.Presenter> : BaseActivity(), BaseContract.View {
+abstract class MvpActivity<P : BaseContract.Presenter> : ToolbarActivity(), BaseContract.View {
 
     lateinit var presenter: P
 

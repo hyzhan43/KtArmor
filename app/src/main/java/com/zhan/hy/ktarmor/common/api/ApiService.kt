@@ -3,6 +3,7 @@ package com.zhan.hy.ktarmor.common.api
 import com.zhan.mvp.data.BaseResponse
 import com.zhan.hy.ktarmor.account.model.response.LoginRsp
 import io.reactivex.Observable
+import kotlinx.coroutines.Deferred
 import retrofit2.http.POST
 import retrofit2.http.Query
 
@@ -14,6 +15,6 @@ import retrofit2.http.Query
 interface ApiService {
 
     @POST(API.LOGIN)
-    fun login(@Query("username") username: String,
-              @Query("password") password: String): Observable<BaseResponse<LoginRsp>>
+    fun loginAsync(@Query("username") username: String,
+                   @Query("password") password: String): Deferred<BaseResponse<LoginRsp>>
 }

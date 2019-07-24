@@ -117,7 +117,7 @@ class PlaceHolderView @JvmOverloads constructor(context: Context, attrs: Attribu
      * 加载错误, 并显示错误信息
      */
     fun triggerError(str: String) {
-        toast(str)
+        context.toast(str)
 
         this.visibility = View.VISIBLE
         changeBindViewState(View.GONE)

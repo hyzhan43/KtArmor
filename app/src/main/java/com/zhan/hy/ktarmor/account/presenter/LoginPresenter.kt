@@ -3,8 +3,6 @@ package com.zhan.hy.ktarmor.account.presenter
 import com.zhan.hy.ktarmor.R
 import com.zhan.hy.ktarmor.account.contract.LoginContract
 import com.zhan.hy.ktarmor.account.model.LoginModel
-import com.zhan.mvp.ext.execute
-import com.zhan.mvp.http.rx.BaseObserver
 import com.zhan.mvp.mvp.BasePresenter
 
 /**
@@ -26,9 +24,15 @@ class LoginPresenter(view: LoginContract.View) : BasePresenter<LoginContract.Vie
             return
         }
 
-        view?.showLoading()
-        LoginModel.login(account, password).execute(BaseObserver(this, {
-            view?.loginSuc(it)
-        }))
+        launchUI({
+            view?.showLoading()
+            val response = LoginModel.login(account, password)
+
+            if (response.isSuccess()) {
+                response.data?.let { view?.loginSuc(it) }
+            } else {
+                view?.showError(response.errorMsg)
+            }
+        })
     }
 }

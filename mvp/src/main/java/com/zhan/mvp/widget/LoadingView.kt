@@ -15,9 +15,11 @@ import com.zhan.mvp.R
  *  @desc:   TODO
  */
 class LoadingView
-@JvmOverloads constructor(context: Context,
-                          attrs: AttributeSet? = null,
-                          defStyle: Int = 0) : View(context, attrs, defStyle) {
+@JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyle: Int = 0
+) : View(context, attrs, defStyle) {
 
     // 外圆画笔
     private var outerPaint: Paint
@@ -82,19 +84,21 @@ class LoadingView
 
     init {
         //取出自定义的属性并赋值
-        val typeArray = context.obtainStyledAttributes(attrs, R.styleable.LoadingView, defStyle, 0)
+        context.obtainStyledAttributes(attrs, R.styleable.LoadingView, defStyle, 0).run {
+            duration = getInt(R.styleable.LoadingView_duration, duration)
 
-        duration = typeArray.getInt(R.styleable.LoadingView_duration, duration)
+            outerColor = getColor(R.styleable.LoadingView_outer_color, Color.BLACK)
+            innerColor = getColor(R.styleable.LoadingView_inner_color, Color.BLACK)
 
-        outerColor = typeArray.getColor(R.styleable.LoadingView_outer_color, Color.BLACK)
-        innerColor = typeArray.getColor(R.styleable.LoadingView_inner_color, Color.BLACK)
+            startAngle = getFloat(R.styleable.LoadingView_start_angle, startAngle)
 
-        startAngle = typeArray.getFloat(R.styleable.LoadingView_start_angle, startAngle)
+            arcWidth = getDimension(R.styleable.LoadingView_arc_width, arcWidth)
+            intervalWidth = getDimension(R.styleable.LoadingView_interval_width, intervalWidth)
 
-        arcWidth = typeArray.getDimension(R.styleable.LoadingView_arc_width, arcWidth)
-        intervalWidth = typeArray.getDimension(R.styleable.LoadingView_interval_width, intervalWidth)
+            recycle()
+        }
 
-        typeArray.recycle()
+
 
         outerPaint = initPaint(outerColor)
         innerPaint = initPaint(innerColor)

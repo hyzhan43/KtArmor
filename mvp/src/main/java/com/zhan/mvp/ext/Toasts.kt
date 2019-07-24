@@ -3,6 +3,7 @@ package com.zhan.mvp.ext
 import android.annotation.SuppressLint
 import android.content.Context
 import android.support.annotation.StringRes
+import android.support.v4.app.Fragment
 import android.view.View
 import android.widget.Toast
 
@@ -44,7 +45,7 @@ object Toasts {
         toast(message.toString())
     }
 
-    fun View.toast(message: String) {
+    fun Fragment.toast(message: String) {
         mToast?.run {
             duration = Toast.LENGTH_SHORT
             setText(message)
@@ -55,7 +56,7 @@ object Toasts {
         }
     }
 
-    fun View.toast(@StringRes strRes: Int) {
-        toast(context.getString(strRes))
+    fun Fragment.toast(@StringRes strRes: Int) {
+        toast(getString(strRes))
     }
 }

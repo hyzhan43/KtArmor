@@ -1,13 +1,18 @@
 package com.zhan.hy.ktarmor.account.model
 
-import com.zhan.hy.ktarmor.common.ApiModel
+import com.zhan.hy.ktarmor.account.model.response.LoginRsp
+import com.zhan.hy.ktarmor.common.api.ApiManager
+import com.zhan.mvp.data.BaseResponse
+import com.zhan.mvp.mvp.BaseModel
 
 /**
  *  @author: hyzhan
  *  @date:   2019/5/21
  *  @desc:   TODO
  */
-object LoginModel : ApiModel() {
+object LoginModel : BaseModel() {
 
-    fun login(account: String, password: String) = apiService.login(account, password)
+    suspend fun login(account: String, password: String): BaseResponse<LoginRsp> {
+        return launchIO { ApiManager.apiService.loginAsync(account, password).await() }
+    }
 }
