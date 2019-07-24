@@ -10,7 +10,7 @@ import okhttp3.OkHttpClient
  *  @date:    2019/7/10
  *  @desc:    TODO
  */
-class MyRetrofitConfig : BaseRetrofitConfig() {
+class RetrofitConfig : BaseRetrofitConfig() {
 
     override val baseUrl: String
         get() = API.BASE_URL
