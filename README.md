@@ -3,17 +3,17 @@
 
 `KtArmor` 寓意着 为Android 赋予`战斗装甲`, 方便开发者快速进行Android 开发。节约开发者开发时间。为了满足开发者需求, 我整合了两个分支, 分别对应着 `MVP`, `MVVM`.
 
-* MVP分支
-架构模式: `MVP` + `Kotlin`
-网络请求: `Retrofit` + `Okhttp` + `Coroutine` + ~~`RxJava`~~
-* 功能
- 1、基本`BaseActivity`、`BaseFragment`、`ToolbarActivity`封装
- 2、MVP框架封装 `MvpActivity`、`MvpFragment`、`BasePresenter`、`BaseModel`封装
- 3、网络请求封装 `BaseOkHttpClient`、`BaseRetrofit`、`RetrofitFactory`
- 4、常用控件`PlaceHolderView(占位布局)`， `LoadingView(加载框)`
- 5、常用扩展封装(`SharedPreferences`、`StartActivity`、`Log`、`Toast`(不重复显示))等
- 6、MVP代码模板(`Activity`、`Presenter`、`Contract`、`Model`)生成插件
- ....
+- MVP分支  
+  - 架构模式: `MVP` + `Kotlin`  
+  - 网络请求: `Retrofit` + `Okhttp` + `Coroutine` + ~~`RxJava`~~    
+- 功能  
+  - 基本`BaseActivity`、`BaseFragment`、`ToolbarActivity`封装  
+  - MVP框架封装 `MvpActivity`、`MvpFragment`、`BasePresenter`、`BaseModel`封装  
+  - 网络请求封装 `BaseOkHttpClient`、`BaseRetrofit`、`RetrofitFactory`  
+  - 常用控件`PlaceHolderView(占位布局)`， `LoadingView(加载框)`  
+  - 常用扩展封装(`SharedPreferences`、`StartActivity`、`Log`、`Toast`(不重复显示))等  
+  - MVP代码模板(`Activity`、`Presenter`、`Contract`、`Model`)生成插件  
+  - ....
 
  # MVP框架引入
 
