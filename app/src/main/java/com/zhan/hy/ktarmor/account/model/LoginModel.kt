@@ -2,7 +2,7 @@ package com.zhan.hy.ktarmor.account.model
 
 import com.zhan.hy.ktarmor.account.model.response.LoginRsp
 import com.zhan.hy.ktarmor.common.api.ApiManager
-import com.zhan.mvp.data.BaseResponse
+import com.zhan.hy.ktarmor.common.bean.BaseResponse
 import com.zhan.mvp.mvp.BaseModel
 
 /**

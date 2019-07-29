@@ -1,4 +1,4 @@
-package com.zhan.mvp.data
+package com.zhan.hy.ktarmor.common.bean
 
 /**
  *  @author: hyzhan

@@ -1,6 +1,5 @@
 package com.zhan.mvp.base
 
-import android.content.res.Resources
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import com.zhan.mvp.R
@@ -23,6 +22,9 @@ abstract class ToolbarActivity : BaseActivity() {
         initToolbar()
     }
 
+    /**
+     *  Toolbar id must be toolbar
+     */
     private fun initToolbar() {
         findViewById<Toolbar>(R.id.toolbar)?.let { toolbar ->
             setSupportActionBar(toolbar)
@@ -31,7 +33,6 @@ abstract class ToolbarActivity : BaseActivity() {
                 it.setDisplayShowHomeEnabled(true)
             }
         }
-        // ?: throw Resources.NotFoundException("Toolbar id must be toolbar")
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

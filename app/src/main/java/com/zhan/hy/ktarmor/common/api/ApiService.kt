@@ -1,8 +1,7 @@
 package com.zhan.hy.ktarmor.common.api
 
-import com.zhan.mvp.data.BaseResponse
+import com.zhan.hy.ktarmor.common.bean.BaseResponse
 import com.zhan.hy.ktarmor.account.model.response.LoginRsp
-import io.reactivex.Observable
 import kotlinx.coroutines.Deferred
 import retrofit2.http.POST
 import retrofit2.http.Query

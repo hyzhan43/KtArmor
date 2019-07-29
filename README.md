@@ -6,14 +6,14 @@
 - MVP分支  
   - 架构模式: `MVP` + `Kotlin`  
   - 网络请求: `Retrofit` + `Okhttp` + `Coroutine` + ~~`RxJava`~~    
-- 功能  
-  - 基本`BaseActivity`、`BaseFragment`、`ToolbarActivity`封装  
-  - MVP框架封装 `MvpActivity`、`MvpFragment`、`BasePresenter`、`BaseModel`封装  
-  - 网络请求封装 `BaseOkHttpClient`、`BaseRetrofit`、`RetrofitFactory`  
-  - 常用控件`PlaceHolderView(占位布局)`， `LoadingView(加载框)`  
-  - 常用扩展封装(`SharedPreferences`、`StartActivity`、`Log`、`Toast`(不重复显示))等  
-  - MVP代码模板(`Activity`、`Presenter`、`Contract`、`Model`)生成插件  
-  - ....
+  - 功能:  
+    - 基本`BaseActivity`、`BaseFragment`、`ToolbarActivity`封装  
+    - MVP框架封装 `MvpActivity`、`MvpFragment`、`BasePresenter`、`BaseModel`封装  
+    - 网络请求封装 `BaseOkHttpClient`、`BaseRetrofit`、`RetrofitFactory`  
+    - 常用控件`PlaceHolderView(占位布局)`， `LoadingView(加载框)`  
+    - 常用扩展封装(`SharedPreferences`、`StartActivity`、`Log`、`Toast`(不重复显示))等  
+    - MVP代码模板(`Activity`、`Presenter`、`Contract`、`Model`)生成插件  
+    - ....
 
  # MVP框架引入
 
@@ -58,3 +58,10 @@
  }
  ```
  这样你就创建好了一个拥有`Kotlin` + `Retrofit` + `Okhttp` + `Coroutine`项目了。然后就可以愉快编写自己的业务代码了(●'◡'●)
+
+
+# 更多用法
+
+## [Kotlin的魔能机甲——KtArmor (一)](https://juejin.im/post/5d319e3651882540be3a2be7)  
+
+## 未完待续
