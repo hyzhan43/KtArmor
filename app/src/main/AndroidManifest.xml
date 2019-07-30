@@ -27,6 +27,7 @@
         <activity android:name=".account.ui.LoginActivity" />
         <activity android:name=".LazyActivity" />
         <activity android:name=".article.ui.ArticleActivity" />
+        <activity android:name=".common.api.test.TestActivity"/>
     </application>
 
 </manifest>
