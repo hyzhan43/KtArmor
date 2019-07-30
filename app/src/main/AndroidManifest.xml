@@ -28,6 +28,7 @@
         <activity android:name=".LazyActivity" />
         <activity android:name=".article.ui.ArticleActivity" />
         <activity android:name=".common.api.test.TestActivity"/>
+        <activity android:name=".register.RegisterActivity"/>
     </application>
 
 </manifest>
