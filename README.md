@@ -64,4 +64,6 @@
 
 ## [Kotlin的魔能机甲——KtArmor (一)](https://juejin.im/post/5d319e3651882540be3a2be7)  
 
+## [Kotlin的魔能机甲——KtArmor插件篇（二）](https://juejin.im/post/5d3eb9e7f265da03a31d1072)
+
 ## 未完待续
