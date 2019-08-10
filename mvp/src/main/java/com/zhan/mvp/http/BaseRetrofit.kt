@@ -18,7 +18,6 @@ object BaseRetrofit {
             .baseUrl(KtArmor.retrofit.baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
-//            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(KtArmor.retrofit.initOkHttpClient())
             .build()
     }

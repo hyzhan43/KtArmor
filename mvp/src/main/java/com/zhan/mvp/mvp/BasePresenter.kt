@@ -1,6 +1,5 @@
 package com.zhan.mvp.mvp
 
-import android.arch.lifecycle.LifecycleObserver
 import com.zhan.mvp.ext.tryCatch
 import kotlinx.coroutines.*
 import java.lang.ref.WeakReference
@@ -10,7 +9,7 @@ import java.lang.ref.WeakReference
  *  @date:   2019/5/16
  *  @desc:   TODO
  */
-abstract class BasePresenter<V : BaseContract.View>(view: V) : BaseContract.Presenter, LifecycleObserver {
+abstract class BasePresenter<V : BaseContract.View>(view: V) : BaseContract.Presenter{
 
     val view: V?
         get() = mViewRef.get()

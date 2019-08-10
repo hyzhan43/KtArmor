@@ -3,7 +3,9 @@ package com.zhan.hy.ktarmor.account.presenter
 import com.zhan.hy.ktarmor.R
 import com.zhan.hy.ktarmor.account.contract.LoginContract
 import com.zhan.hy.ktarmor.account.model.LoginModel
+import com.zhan.mvp.ext.tryCatch
 import com.zhan.mvp.mvp.BasePresenter
+import java.lang.Exception
 
 /**
  *  @author: hyzhan
@@ -23,6 +25,7 @@ class LoginPresenter(view: LoginContract.View) : BasePresenter<LoginContract.Vie
             view?.passwordEmpty(R.string.password_empty)
             return
         }
+
 
         launchUI({
             view?.showLoading()
