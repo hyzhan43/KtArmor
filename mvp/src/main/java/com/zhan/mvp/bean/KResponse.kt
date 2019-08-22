@@ -5,7 +5,11 @@ package com.zhan.mvp.bean
  *  @date:    2019/8/7
  *  @desc:    TODO
  */
-interface KResponse {
+interface KResponse<T> {
 
-    
+    fun isSuccess(): Boolean
+
+    fun getKMessage(): String?
+
+    fun getKData(): T?
 }

@@ -9,6 +9,7 @@ import android.os.Parcelable
 import android.support.v4.app.Fragment
 import android.util.Log
 import android.util.TypedValue
+import com.zhan.mvp.constant.Const
 import com.zhan.mvp.utils.IntentUtils
 import java.io.Serializable
 import java.lang.Exception
@@ -36,9 +37,9 @@ fun Context.log(message: String) {
 }
 
 fun String.showLog() {
-    Log.d(this.javaClass.name, "<-------------------KtArmor Start--------------------")
-    Log.d(this.javaClass.name, "${this.javaClass.name}:  $this")
-    Log.d(this.javaClass.name, "--------------------KtArmor End------------------->")
+    Log.d(Const.KT_ARMOR, "<-------------------KtArmor Start--------------------")
+    Log.d(Const.KT_ARMOR, "[content]:  $this")
+    Log.d(Const.KT_ARMOR, "--------------------KtArmor End------------------->")
 }
 
 inline fun tryCatch(tryBlock: () -> Unit, catchBlock: (Throwable) -> Unit = {}) {

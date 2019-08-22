@@ -1,5 +1,8 @@
 package com.zhan.mvp.mvp
 
+import android.support.annotation.StringRes
+import com.zhan.mvp.bean.KResponse
+import com.zhan.mvp.config.Setting
 import com.zhan.mvp.ext.tryCatch
 import kotlinx.coroutines.*
 import java.lang.ref.WeakReference
@@ -29,6 +32,28 @@ abstract class BasePresenter<V : BaseContract.View>(view: V) : BaseContract.Pres
                 error?.invoke(it) ?: view?.showError(it.toString())
             })
         }
+    }
+
+    fun <R> KResponse<R>.execute(success: (R?) -> Unit, error: ((String) -> Unit)? = null) {
+        if (this.isSuccess()) {
+            success(this.getKData())
+        } else {
+            (this.getKMessage() ?: Setting.MESSAGE_EMPTY).let {
+                error?.invoke(it) ?: showError(it)
+            }
+        }
+    }
+
+    override fun showError(msg: String) {
+        view?.showError(msg)
+    }
+
+    override fun showError(@StringRes strRes: Int) {
+        view?.showError(strRes)
+    }
+
+    override fun showLoading() {
+        view?.showLoading()
     }
 
     override fun detachView() {
