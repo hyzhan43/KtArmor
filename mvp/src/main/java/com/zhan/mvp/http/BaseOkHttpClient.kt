@@ -17,17 +17,16 @@ object BaseOkHttpClient {
     // 初始化 okHttp
     fun init(vararg interceptors: Interceptor): OkHttpClient {
 
-        val builder = OkHttpClient.Builder()
+        return OkHttpClient.Builder().run {
 
-        interceptors.forEach {
-            builder.addInterceptor(it)
+            interceptors.forEach { addInterceptor(it) }
+
+            addInterceptor(LoggingIntercept.init())
+            readTimeout(KtArmor.retrofit.readTimeOut, TimeUnit.SECONDS)
+            writeTimeout(KtArmor.retrofit.writeTimeOut, TimeUnit.SECONDS)
+            connectTimeout(KtArmor.retrofit.connectTimeOut, TimeUnit.SECONDS)
+
+            build()
         }
-
-        builder.addInterceptor(LoggingIntercept.init())
-            .readTimeout(KtArmor.retrofit.readTimeOut, TimeUnit.SECONDS)
-            .writeTimeout(KtArmor.retrofit.writeTimeOut, TimeUnit.SECONDS)
-            .connectTimeout(KtArmor.retrofit.connectTimeOut, TimeUnit.SECONDS)
-
-        return builder.build()
     }
 }

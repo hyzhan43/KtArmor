@@ -14,9 +14,7 @@ import com.zhan.mvp.ext.showLog
  *  @date:   2019/6/4
  *  @desc:   TODO
  */
-class ArticleActivity : ListActivity<ArticleContract.Presenter, ArticleData, ArticleAdapter>(), ArticleContract.View {
-
-    override var total: Int = 0
+class ArticleActivity : ListActivity<ArticleContract.Presenter, ArticleData>(), ArticleContract.View {
 
     override fun bindPresenter(): ArticleContract.Presenter = ArticlePresenter(this)
 
@@ -37,7 +35,6 @@ class ArticleActivity : ListActivity<ArticleContract.Presenter, ArticleData, Art
         for (i in 1..10) {
             test.add(ArticleData("title = $i", "content = $i"))
         }
-        total = 13
         addData(test)
     }
 

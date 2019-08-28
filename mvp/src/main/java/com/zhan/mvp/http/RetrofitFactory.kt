@@ -8,11 +8,7 @@ import retrofit2.Retrofit
  *  @date:   2019/5/17
  *  @desc:   TODO
  */
-class RetrofitFactory private constructor() {
-
-    companion object {
-        val instance by lazy { RetrofitFactory() }
-    }
+object RetrofitFactory{
 
     private val retrofit: Retrofit by lazy {
         KtArmor.retrofit.initRetrofit()

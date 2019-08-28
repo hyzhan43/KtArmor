@@ -27,8 +27,8 @@ class PlaceHolderView @JvmOverloads constructor(context: Context, attrs: Attribu
     var loadingColor = 0
         set(color) {
             field = color
-            loading.innerColor = color
-            loading.outerColor = color
+            mLoading.innerColor = color
+            mLoading.outerColor = color
         }
 
     var emptyText: String? = null
@@ -89,8 +89,8 @@ class PlaceHolderView @JvmOverloads constructor(context: Context, attrs: Attribu
      *  显示空布局, 隐藏当前数据布局
      */
     fun triggerEmpty(msg: String? = null, @DrawableRes icon: Int? = null) {
-        loading.visibility = View.GONE
-        loading.stop()
+        mLoading.visibility = View.GONE
+        mLoading.stop()
 
         mIvImage.setImageResource(icon ?: defaultDrawable)
         mTvTips.text = msg ?: emptyText
@@ -104,8 +104,8 @@ class PlaceHolderView @JvmOverloads constructor(context: Context, attrs: Attribu
      *  显示一个网络错误的图标
      */
     fun triggerNetError(msg: String? = null, @DrawableRes icon: Int? = null) {
-        loading.visibility = View.GONE
-        loading.stop()
+        mLoading.visibility = View.GONE
+        mLoading.stop()
         mIvImage.setImageResource(icon ?: defaultDrawable)
         mTvTips.text = msg ?: errorText
 
@@ -128,8 +128,8 @@ class PlaceHolderView @JvmOverloads constructor(context: Context, attrs: Attribu
      */
     fun triggerLoading() {
         mIvImage.visibility = View.GONE
-        loading.visibility = View.VISIBLE
-        loading.start()
+        mLoading.visibility = View.VISIBLE
+        mLoading.start()
         mTvTips.text = loadingText
 
         this.visibility = View.VISIBLE

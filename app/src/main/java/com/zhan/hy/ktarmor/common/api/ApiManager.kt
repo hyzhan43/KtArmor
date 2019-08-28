@@ -11,6 +11,6 @@ import com.zhan.mvp.mvp.BaseModel
 object ApiManager {
 
     val apiService by lazy {
-        RetrofitFactory.instance.create(ApiService::class.java)
+        RetrofitFactory.create(ApiService::class.java)
     }
 }

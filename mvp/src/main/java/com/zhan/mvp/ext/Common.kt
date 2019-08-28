@@ -31,22 +31,11 @@ inline fun <reified T : Activity> Fragment.startActivity(vararg params: Pair<Str
     activity?.startActivity(intent)
 }
 
-
-fun Context.log(message: String) {
-    Log.d(this.javaClass.name, message)
-}
-
-fun String.showLog() {
-    Log.d(Const.KT_ARMOR, "<-------------------KtArmor Start--------------------")
-    Log.d(Const.KT_ARMOR, "[content]:  $this")
-    Log.d(Const.KT_ARMOR, "--------------------KtArmor End------------------->")
-}
-
 inline fun tryCatch(tryBlock: () -> Unit, catchBlock: (Throwable) -> Unit = {}) {
     try {
         tryBlock()
     } catch (t: Throwable) {
-        t.toString().showLog()
+        t.printStackTrace()
         catchBlock(t)
     }
 }
