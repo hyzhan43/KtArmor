@@ -44,5 +44,6 @@ class LoginActivity : MvpActivity<LoginContract.Presenter>(), LoginContract.View
 
     override fun loginSuc(loginRsp: LoginRsp) {
         toast("登陆成功！")
+        hideLoading()
     }
 }

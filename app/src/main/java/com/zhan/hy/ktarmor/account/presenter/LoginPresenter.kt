@@ -12,7 +12,8 @@ import java.lang.Exception
  *  @date:   2019/5/21
  *  @desc:   TODO
  */
-class LoginPresenter(view: LoginContract.View) : BasePresenter<LoginContract.View>(view), LoginContract.Presenter {
+class LoginPresenter(view: LoginContract.View) : BasePresenter<LoginContract.View>(view),
+    LoginContract.Presenter {
 
     override fun login(account: String, password: String) {
 
@@ -29,13 +30,9 @@ class LoginPresenter(view: LoginContract.View) : BasePresenter<LoginContract.Vie
 
         launchUI({
             view?.showLoading()
-            val response = LoginModel.login(account, password)
-
-            if (response.isSuccess()) {
-                response.data?.let { view?.loginSuc(it) }
-            } else {
-                view?.showError(response.errorMsg)
-            }
+            LoginModel.login(account, password).execute({ loginRsp ->
+                loginRsp?.let { view?.loginSuc(it) }
+            })
         })
     }
 }

@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.LinearLayout
 import com.zhan.mvp.R
 import com.zhan.mvp.ext.Toasts.toast
-import kotlinx.android.synthetic.main.layout_empty.view.*
+import kotlinx.android.synthetic.main.k_layout_empty.view.*
 
 /**
  *  @author: hyzhan
@@ -49,7 +49,7 @@ class PlaceHolderView @JvmOverloads constructor(context: Context, attrs: Attribu
     private val mBindViews by lazy { ArrayList<View>() }
 
     init {
-        View.inflate(context, R.layout.layout_empty, this)
+        View.inflate(context, R.layout.k_layout_empty, this)
 
         val typeArray = context.obtainStyledAttributes(attrs, R.styleable.PlaceHolderView, defStyle, 0)
 

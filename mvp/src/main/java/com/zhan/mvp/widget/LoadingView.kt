@@ -7,6 +7,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.animation.LinearInterpolator
 import com.zhan.mvp.R
+import kotlin.math.min
 
 
 /**
@@ -172,7 +173,7 @@ class LoadingView
             //不限制，使用默认的尺寸
             MeasureSpec.UNSPECIFIED -> result = defaultSize
             // 最大上限
-            MeasureSpec.AT_MOST -> result = Math.min(defaultSize, size)
+            MeasureSpec.AT_MOST -> result = min(defaultSize, size)
             MeasureSpec.EXACTLY -> result = size
         }
 
