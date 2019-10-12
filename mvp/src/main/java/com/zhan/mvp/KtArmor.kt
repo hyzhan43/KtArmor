@@ -23,7 +23,5 @@ object KtArmor {
         this.retrofit = retrofit
         // 初始化 SharePreference
         Preference.init(context)
-        // 初始化 Toast
-        Toasts.init(context)
     }
 }

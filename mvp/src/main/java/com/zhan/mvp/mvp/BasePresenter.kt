@@ -2,7 +2,7 @@ package com.zhan.mvp.mvp
 
 import android.support.annotation.StringRes
 import com.zhan.mvp.bean.KResponse
-import com.zhan.mvp.config.Setting
+import com.zhan.mvp.ext.showLog
 import com.zhan.mvp.ext.tryCatch
 import kotlinx.coroutines.*
 import java.lang.ref.WeakReference
@@ -12,7 +12,7 @@ import java.lang.ref.WeakReference
  *  @date:   2019/5/16
  *  @desc:   TODO
  */
-abstract class BasePresenter<V : BaseContract.View>(view: V) : BaseContract.Presenter{
+abstract class BasePresenter<V : BaseContract.View>(view: V) : BaseContract.Presenter {
 
     val view: V?
         get() = mViewRef.get()
@@ -29,18 +29,58 @@ abstract class BasePresenter<V : BaseContract.View>(view: V) : BaseContract.Pres
             tryCatch({
                 block()
             }, {
-                error?.invoke(it) ?: view?.showError(it.toString())
+                error?.invoke(it) ?: showException(it.toString())
             })
         }
     }
+
+    fun <R> quickLaunch(block: Execute<R>.() -> Unit) {
+        Execute<R>().apply(block)
+    }
+
+    inner class Execute<R> {
+
+        private var successBlock: ((R?) -> Unit)? = null
+        private var failBlock: ((String?) -> Unit)? = null
+        private var exceptionBlock: ((Throwable?) -> Unit)? = null
+
+        fun request(block: suspend CoroutineScope.() -> KResponse<R>?) {
+            launchUI({
+                block()?.run {
+                    if (isSuccess()) {
+                        successBlock?.invoke(getKData())
+                        return@run
+                    }
+
+                    failBlock?.invoke(getKMessage()) ?: showError(getKMessage())
+                }
+            }, exceptionBlock)
+        }
+
+        fun onSuccess(block: (R?) -> Unit) {
+            this.successBlock = block
+        }
+
+        fun onFail(block: (String?) -> Unit) {
+            this.failBlock = block
+        }
+
+        fun onException(block: (Throwable?) -> Unit) {
+            this.exceptionBlock = block
+        }
+    }
+
+    private fun showException(exception: String) {
+        exception.showLog()
+        // TODO toast 网络异常
+    }
+
 
     fun <R> KResponse<R>.execute(success: (R?) -> Unit, error: ((String) -> Unit)? = null) {
         if (this.isSuccess()) {
             success(this.getKData())
         } else {
-            (this.getKMessage() ?: Setting.MESSAGE_EMPTY).let {
-                error?.invoke(it) ?: showError(it)
-            }
+            error?.invoke(this.getKMessage()) ?: showError(this.getKMessage())
         }
     }
 

@@ -3,9 +3,11 @@ package com.zhan.hy.ktarmor.account.presenter
 import com.zhan.hy.ktarmor.R
 import com.zhan.hy.ktarmor.account.contract.LoginContract
 import com.zhan.hy.ktarmor.account.model.LoginModel
+import com.zhan.hy.ktarmor.account.model.response.LoginRsp
+import com.zhan.hy.ktarmor.common.bean.BaseResponse
+import com.zhan.mvp.bean.KResponse
 import com.zhan.mvp.ext.tryCatch
 import com.zhan.mvp.mvp.BasePresenter
-import java.lang.Exception
 
 /**
  *  @author: hyzhan
@@ -28,11 +30,19 @@ class LoginPresenter(view: LoginContract.View) : BasePresenter<LoginContract.Vie
         }
 
 
-        launchUI({
-            view?.showLoading()
-            LoginModel.login(account, password).execute({ loginRsp ->
+//        launchUI({
+//            view?.showLoading()
+//            LoginModel.login(account, password).Execute({ loginRsp ->
+//                loginRsp?.let { view?.loginSuc(it) }
+//            })
+//        })
+
+        quickLaunch<LoginRsp> {
+            request { LoginModel.login(account, password) }
+
+            onSuccess { loginRsp ->
                 loginRsp?.let { view?.loginSuc(it) }
-            })
-        })
+            }
+        }
     }
 }

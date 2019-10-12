@@ -1,6 +1,5 @@
 package com.zhan.mvp.ext
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.support.annotation.StringRes
@@ -17,15 +16,6 @@ object Toasts {
 
     private var mToast: Toast? = null
 
-    @SuppressLint("ShowToast")
-    fun init(context: Context) {
-        mToast = Toast.makeText(context, "", Toast.LENGTH_SHORT)
-    }
-
-    fun show(message: String) {
-        mToast?.apply { setText(message) }?.show()
-    }
-
     /**
      *  如果 mToast 没有初始化, 就创建一个 Toast, 并赋值
      *  否则就直接显示
@@ -35,7 +25,7 @@ object Toasts {
             it.duration = duration
             it.setText(message)
             it.show()
-        } ?: Toast.makeText(context, message, duration).apply {
+        } ?: Toast.makeText(context.applicationContext, message, duration).apply {
             mToast = this
             show()
         }

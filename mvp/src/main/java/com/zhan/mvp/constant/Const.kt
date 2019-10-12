@@ -8,4 +8,6 @@ package com.zhan.mvp.constant
 object Const {
 
     const val KT_ARMOR = "KtArmor"
+
+    const val MESSAGE_EMPTY = "message is Empty"
 }
