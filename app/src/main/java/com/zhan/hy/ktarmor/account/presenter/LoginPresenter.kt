@@ -8,6 +8,7 @@ import com.zhan.hy.ktarmor.common.bean.BaseResponse
 import com.zhan.mvp.bean.KResponse
 import com.zhan.mvp.ext.tryCatch
 import com.zhan.mvp.mvp.BasePresenter
+import kotlinx.coroutines.launch
 
 /**
  *  @author: hyzhan
@@ -29,10 +30,24 @@ class LoginPresenter(view: LoginContract.View) : BasePresenter<LoginContract.Vie
             return
         }
 
-
+//        presenterScope.launch {
+//            tryCatch({
+//                view?.showLoading()
+//                val response = LoginModel.login(account, password)
+//
+//                if (response.isSuccess()) {
+//                    response.data?.let { view?.loginSuc(it) }
+//                } else {
+//                    view?.loginFail(response.errorMsg)
+//                }
+//            }, {
+//                view?.loginError(it.toString())
+//            })
+//        }
+//
 //        launchUI({
 //            view?.showLoading()
-//            LoginModel.login(account, password).Execute({ loginRsp ->
+//            LoginModel.login(account, password).execute({ loginRsp ->
 //                loginRsp?.let { view?.loginSuc(it) }
 //            })
 //        })
@@ -42,6 +57,14 @@ class LoginPresenter(view: LoginContract.View) : BasePresenter<LoginContract.Vie
 
             onSuccess { loginRsp ->
                 loginRsp?.let { view?.loginSuc(it) }
+            }
+
+            onFail { message ->
+                message?.let { view?.loginFail(it) }
+            }
+
+            onException { throwable ->
+                throwable?.let { view?.loginError(it.toString()) }
             }
         }
     }

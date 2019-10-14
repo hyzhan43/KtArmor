@@ -14,6 +14,8 @@ interface LoginContract {
         fun accountEmpty(msg: Int)
         fun passwordEmpty(msg: Int)
         fun loginSuc(loginRsp: LoginRsp)
+        fun loginFail(errorMsg: String)
+        fun loginError(toString: String)
     }
 
     interface Presenter : BaseContract.Presenter {

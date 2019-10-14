@@ -46,4 +46,12 @@ class LoginActivity : MvpActivity<LoginContract.Presenter>(), LoginContract.View
         toast("登陆成功！")
         hideLoading()
     }
+
+    override fun loginError(toString: String) {
+
+    }
+
+    override fun loginFail(errorMsg: String) {
+
+    }
 }
