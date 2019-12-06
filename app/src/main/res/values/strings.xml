@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">KtArmor</string>
+    <string name="account">账号</string>
+    <string name="password">密码</string>
+    <string name="login">登陆</string>
+    <string name="password_empty">密码不能为空</string>
+    <string name="account_empty">账号不能为空</string>
+    <string name="login_example">登录例子</string>
+    <string name="article">List</string>
 </resources>
