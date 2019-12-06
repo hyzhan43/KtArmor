@@ -2,6 +2,7 @@ package com.zhan.mvp.mvp
 
 import android.support.annotation.StringRes
 import com.zhan.mvp.bean.KResponse
+import com.zhan.mvp.constant.Const
 import com.zhan.mvp.ext.showLog
 import com.zhan.mvp.ext.tryCatch
 import kotlinx.coroutines.*
@@ -40,13 +41,13 @@ abstract class BasePresenter<V : BaseContract.View>(view: V) : BaseContract.Pres
 
     private fun showException(exception: String) {
         exception.showLog()
-        // TODO toast 网络异常
+        view?.showError(Const.NETWORK_ERROR)
     }
 
 
-    fun <R> KResponse<R>.execute(success: (R?) -> Unit, error: ((String) -> Unit)? = null) {
+    fun <R> KResponse<R>.execute(success: ((R?) -> Unit)?, error: ((String) -> Unit)? = null) {
         if (this.isSuccess()) {
-            success(this.getKData())
+            success?.invoke(this.getKData())
             return
         }
 
@@ -74,7 +75,7 @@ abstract class BasePresenter<V : BaseContract.View>(view: V) : BaseContract.Pres
 
     inner class Execute<R> {
 
-        private lateinit var successBlock: ((R?) -> Unit)
+        private var successBlock: ((R?) -> Unit)? = null
         private var failBlock: ((String?) -> Unit)? = null
         private var exceptionBlock: ((Throwable?) -> Unit)? = null
 
