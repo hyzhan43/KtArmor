@@ -7,10 +7,10 @@
 
 - MVP  
   - 架构模式: `MVP` + `Kotlin`  
-  - 网络请求: `Retrofit` + `Okhttp` + `Coroutine` + ~~`RxJava`~~    
+  - 网络请求: `Retrofit` + `Okhttp` + `Coroutine`     
   - 功能:  
   - `架构模式`: `MVP` + `Kotlin`  
-  - `网络请求`: `Retrofit` + `Okhttp` + `Coroutine` + ~~`RxJava`~~    
+  - `网络请求`: `Retrofit` + `Okhttp` + `Coroutine` 
   - `代码`：简洁优雅, 易扩展
   - `文档`: 有相关的KtArmor-MVP 系列文档说明
   - `插件`：对应 KtArmor-MVP 模板代码生成插件

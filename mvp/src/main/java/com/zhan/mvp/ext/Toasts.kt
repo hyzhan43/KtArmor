@@ -40,7 +40,7 @@ object Toasts {
     }
 
     fun Context.toast(@StringRes message: Int, duration: Int = Toast.LENGTH_SHORT) {
-        toast(message.toString(), duration)
+        toast(getString(message), duration)
     }
 
     fun Activity.toast(message: String, duration: Int = Toast.LENGTH_SHORT) {
@@ -48,7 +48,7 @@ object Toasts {
     }
 
     fun Activity.toast(@StringRes message: Int, duration: Int = Toast.LENGTH_SHORT) {
-        toast(message.toString(), duration)
+        toast(getString(message), duration)
     }
 
     fun Fragment.toast(message: String, duration: Int = Toast.LENGTH_SHORT) {

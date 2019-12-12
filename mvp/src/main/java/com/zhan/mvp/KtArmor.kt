@@ -1,5 +1,6 @@
 package com.zhan.mvp
 
+import android.app.Application
 import android.content.Context
 import com.zhan.mvp.common.Preference
 import com.zhan.mvp.config.Setting
@@ -18,7 +19,7 @@ object KtArmor {
 
     lateinit var retrofit: RetrofitConfig
 
-    fun init(context: Context, retrofit: RetrofitConfig) {
+    fun init(context: Application, retrofit: RetrofitConfig) {
 
         this.retrofit = retrofit
         // 初始化 SharePreference
