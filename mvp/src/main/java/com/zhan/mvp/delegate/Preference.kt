@@ -1,4 +1,4 @@
-package com.zhan.mvp.common
+package com.zhan.mvp.delegate
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -24,12 +24,12 @@ class Preference<T>(private val name: String, private val default: T) : ReadWrit
         fun clear() = preference.edit().clear().apply()
     }
 
-    override fun getValue(thisRef: Any?, property: KProperty<*>): T = findPreference(name, default)
+    override fun getValue(thisRef: Any?, property: KProperty<*>): T = findPreference()
 
     override fun setValue(thisRef: Any?, property: KProperty<*>, value: T) = putPreference(name, value)
 
     @Suppress("UNCHECKED_CAST")
-    private fun <T> findPreference(name: String, default: T): T = with(preference) {
+    private fun <T> findPreference(): T = with(preference) {
         val res: Any = when (default) {
             is Long -> getLong(name, default)
             is String -> getString(name, default)

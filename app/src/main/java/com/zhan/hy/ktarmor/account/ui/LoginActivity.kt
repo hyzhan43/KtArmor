@@ -4,6 +4,7 @@ import com.zhan.hy.ktarmor.R
 import com.zhan.hy.ktarmor.account.contract.LoginContract
 import com.zhan.hy.ktarmor.account.model.response.LoginRsp
 import com.zhan.hy.ktarmor.account.presenter.LoginPresenter
+import com.zhan.mvp.delegate.Intent
 import com.zhan.mvp.ext.Toasts.toast
 import com.zhan.mvp.ext.str
 import com.zhan.mvp.mvp.MvpActivity
@@ -16,12 +17,16 @@ import kotlinx.android.synthetic.main.activity_login.*
  */
 class LoginActivity : MvpActivity<LoginContract.Presenter>(), LoginContract.View {
 
+    private var tip by Intent("hello", "!!!!")
+
     override fun getLayoutId(): Int = R.layout.activity_login
 
     override fun bindPresenter(): LoginContract.Presenter = LoginPresenter(this)
 
     override fun initListener() {
         super.initListener()
+
+        toast(tip)
 
         mBtnLogin.setOnClickListener {
             mTilAccount.isErrorEnabled = false
