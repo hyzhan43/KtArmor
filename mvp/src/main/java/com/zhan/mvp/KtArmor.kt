@@ -2,6 +2,7 @@ package com.zhan.mvp
 
 import android.app.Application
 import com.zhan.mvp.delegate.Preference
+import com.zhan.mvp.ext.Toasts
 import com.zhan.mvp.http.RetrofitConfig
 
 /**
@@ -19,5 +20,7 @@ object KtArmor {
         this.retrofit = retrofit
         // 初始化 SharePreference
         Preference.init(context)
+
+        Toasts.init(context)
     }
 }

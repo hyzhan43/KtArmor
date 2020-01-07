@@ -59,13 +59,13 @@ class LoginPresenter(view: LoginContract.View) : BasePresenter<LoginContract.Vie
                 loginRsp?.let { view?.loginSuc(it) }
             }
 
-            onFail { message ->
-                message?.let { view?.loginFail(it) }
-            }
+//            onFail { message ->
+//                message?.let { view?.loginFail(it) }
+//            }
 
-            onException { throwable ->
-                throwable?.let { view?.loginError(it.toString()) }
-            }
+//            onException { throwable ->
+//                throwable?.let { view?.loginError(it.toString()) }
+//            }
         }
     }
 }

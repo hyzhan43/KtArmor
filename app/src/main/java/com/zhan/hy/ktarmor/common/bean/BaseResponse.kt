@@ -18,5 +18,5 @@ data class BaseResponse<T>(
 
     override fun getKData(): T? = data
 
-    override fun getKMessage(): String = errorMsg
+    override fun getKMessage(): String? = errorMsg
 }

@@ -45,14 +45,14 @@ abstract class BasePresenter<V : BaseContract.View>(view: V) : BaseContract.Pres
     }
 
 
-    fun <R> KResponse<R>.execute(success: ((R?) -> Unit)?, error: ((String) -> Unit)? = null) {
-        if (this.isSuccess()) {
-            success?.invoke(this.getKData())
-            return
-        }
-
-        error?.invoke(this.getKMessage()) ?: showError(this.getKMessage())
-    }
+//    fun <R> KResponse<R>.execute(success: ((R?) -> Unit)?, error: ((String) -> Unit)? = null) {
+//        if (this.isSuccess()) {
+//            success?.invoke(this.getKData())
+//            return
+//        }
+//
+//        error?.invoke(this.getKMessage()) ?: showError(this.getKMessage())
+//    }
 
     override fun showError(msg: String) {
         view?.showError(msg)

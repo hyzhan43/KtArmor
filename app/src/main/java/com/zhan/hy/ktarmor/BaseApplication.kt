@@ -15,7 +15,5 @@ class BaseApplication : Application(){
 
         // 初始化KtArmor
         KtArmor.init(this, RetrofitConfig())
-
-
     }
 }
