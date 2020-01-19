@@ -49,8 +49,8 @@ dependencies {
     // retrofit
     String retrofit_version = '2.4.0'
     api "com.squareup.retrofit2:retrofit:$retrofit_version"
-    api "com.squareup.retrofit2:converter-gson:${retrofit_version}"
-    api "com.squareup.retrofit2:adapter-rxjava2:${retrofit_version}"
+    api "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    api "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
 
     // okhttp
     String okhttp_version = '3.4.1'
