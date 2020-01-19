@@ -52,11 +52,11 @@ class LoginActivity : MvpActivity<LoginContract.Presenter>(), LoginContract.View
         hideLoading()
     }
 
-    override fun loginError(toString: String) {
-
+    override fun loginError(errorMsg: String) {
+        toast(errorMsg)
     }
 
     override fun loginFail(errorMsg: String) {
-
+        toast(errorMsg)
     }
 }
