@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 /**
  *  @author:  hyzhan
  *  @date:    2019/7/10
- *  @desc:    TODO
+ *  @desc:    封装基本 OkHttpClient, Log拦截器, 读写连接 时长
  */
 object BaseOkHttpClient {
 

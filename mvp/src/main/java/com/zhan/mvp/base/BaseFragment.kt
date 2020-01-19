@@ -9,7 +9,7 @@ import android.view.ViewGroup
 /**
  *  @author: hyzhan
  *  @date:   2019/5/16
- *  @desc:   TODO
+ *  @desc:   基本 Fragment 封装
  */
 abstract class BaseFragment : Fragment() {
 

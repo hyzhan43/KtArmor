@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity
 /**
  *  @author: hyzhan
  *  @date:   2019/5/16
- *  @desc:   TODO
+ *  @desc:   基本 Activity 封装
  */
 abstract class BaseActivity : AppCompatActivity() {
 

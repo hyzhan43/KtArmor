@@ -6,7 +6,7 @@ import com.zhan.mvp.ext.Toasts
 /**
  *  @author:  hyzhan
  *  @date:    2019/8/7
- *  @desc:    TODO
+ *  @desc:    基本 Response 接口
  */
 interface KResponse<T> {
 

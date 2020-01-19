@@ -7,7 +7,7 @@ import kotlinx.coroutines.withContext
 /**
  *  @author: hyzhan
  *  @date:   2019/5/21
- *  @desc:   TODO
+ *  @desc:   基本 Model类
  */
 abstract class BaseModel {
 

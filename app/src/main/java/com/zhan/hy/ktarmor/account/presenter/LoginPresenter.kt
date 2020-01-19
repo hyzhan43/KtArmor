@@ -30,28 +30,38 @@ class LoginPresenter(view: LoginContract.View) : BasePresenter<LoginContract.Vie
             return
         }
 
-//        presenterScope.launch {
-//            tryCatch({
-//                view?.showLoading()
-//                val response = LoginModel.login(account, password)
-//
-//                if (response.isSuccess()) {
-//                    response.data?.let { view?.loginSuc(it) }
-//                } else {
-//                    view?.loginFail(response.errorMsg)
-//                }
-//            }, {
-//                view?.loginError(it.toString())
-//            })
-//        }
-//
-//        launchUI({
-//            view?.showLoading()
-//            LoginModel.login(account, password).execute({ loginRsp ->
-//                loginRsp?.let { view?.loginSuc(it) }
-//            })
-//        })
+        /**
+         *  原始请求
+         */
+        /*presenterScope.launch {
+            tryCatch({
+                view?.showLoading()
+                val response = LoginModel.login(account, password)
 
+                if (response.isSuccess()) {
+                    response.data?.let { view?.loginSuc(it) }
+                } else {
+                    view?.loginFail(response.errorMsg)
+                }
+            }, {
+                view?.loginError(it.toString())
+            })
+        }*/
+
+
+        /**
+         *  封装的扩展方法
+         */
+        /*launchUI({
+            view?.showLoading()
+            LoginModel.login(account, password).execute({ loginRsp ->
+                loginRsp?.let { view?.loginSuc(it) }
+            })
+        })*/
+
+        /**
+         *  DSL 方式
+         */
         quickLaunch<LoginRsp> {
             request { LoginModel.login(account, password) }
 
@@ -59,13 +69,13 @@ class LoginPresenter(view: LoginContract.View) : BasePresenter<LoginContract.Vie
                 loginRsp?.let { view?.loginSuc(it) }
             }
 
-//            onFail { message ->
-//                message?.let { view?.loginFail(it) }
-//            }
+            onFail { message ->
+                message?.let { view?.loginFail(it) }
+            }
 
-//            onException { throwable ->
-//                throwable?.let { view?.loginError(it.toString()) }
-//            }
+            onException { throwable ->
+                throwable?.let { view?.loginError(it.toString()) }
+            }
         }
     }
 }

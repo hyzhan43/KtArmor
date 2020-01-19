@@ -8,7 +8,7 @@ import com.zhan.mvp.http.RetrofitConfig
 /**
  *  @author: hyzhan
  *  @date:   2019/5/22
- *  @desc:   TODO
+ *  @desc:   KtArmor 框架初始化
  */
 
 object KtArmor {

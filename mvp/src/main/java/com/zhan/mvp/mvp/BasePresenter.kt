@@ -11,7 +11,7 @@ import java.lang.ref.WeakReference
 /**
  *  @author: hyzhan
  *  @date:   2019/5/16
- *  @desc:   TODO
+ *  @desc:   基本 BasePresenter, 封装基本请求方法, view对象, 以及基本操作 view方法
  */
 abstract class BasePresenter<V : BaseContract.View>(view: V) : BaseContract.Presenter {
 
