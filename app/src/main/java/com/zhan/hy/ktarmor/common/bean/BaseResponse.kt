@@ -14,6 +14,8 @@ data class BaseResponse<T>(
     var errorMsg: String = Const.MESSAGE_EMPTY
 ) : KResponse<T> {
 
+    override fun getKCode(): Int = errorCode
+
     override fun isSuccess(): Boolean = errorCode == 0
 
     override fun getKData(): T? = data

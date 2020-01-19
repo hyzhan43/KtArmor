@@ -12,6 +12,8 @@ interface KResponse<T> {
 
     fun isSuccess(): Boolean
 
+    fun getKCode(): Int
+
     fun getKMessage(): String?
 
     fun getKData(): T?
