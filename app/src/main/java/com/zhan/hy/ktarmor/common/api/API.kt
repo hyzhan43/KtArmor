@@ -5,7 +5,7 @@ package com.zhan.hy.ktarmor.common.api
  *  @date:   2019/5/21
  *  @desc:   TODO
  */
-object API{
+object API {
 
     const val BASE_URL = "https://www.wanandroid.com"
 

@@ -3,7 +3,7 @@ package com.zhan.mvp
 import android.app.Application
 import com.zhan.mvp.common.Preference
 import com.zhan.mvp.ext.Toasts
-import com.zhan.mvp.http.RetrofitConfig
+import com.zhan.mvp.http.BaseRetrofitConfig
 
 /**
  *  @author: hyzhan
@@ -13,14 +13,14 @@ import com.zhan.mvp.http.RetrofitConfig
 
 object KtArmor {
 
-    lateinit var retrofit: RetrofitConfig
+    var retrofitConfig = BaseRetrofitConfig()
 
-    fun init(context: Application, retrofit: RetrofitConfig) {
+    fun init(application: Application) {
 
-        this.retrofit = retrofit
         // 初始化 SharePreference
-        Preference.init(context)
+        Preference.init(application)
+        Toasts.init(application)
 
-        Toasts.init(context)
+        //application.registerActivityLifecycleCallbacks(ActivityLifecycle)
     }
 }

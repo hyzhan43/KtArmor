@@ -14,6 +14,6 @@ class BaseApplication : Application(){
         super.onCreate()
 
         // 初始化KtArmor
-        KtArmor.init(this, RetrofitConfig())
+        KtArmor.init(this)
     }
 }

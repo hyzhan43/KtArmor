@@ -7,4 +7,5 @@
     <string name="account_empty">账号不能为空</string>
     <string name="login_example">登录例子</string>
     <string name="article">List</string>
+    <string name="login_success">登录成功</string>
 </resources>

@@ -45,7 +45,7 @@ dependencies {
     // Material Design 的颜色与布局大小
     api 'net.qiujuer.genius:res:2.1.1'
 
-    // retrofit
+    // retrofitConfig
     String retrofit_version = '2.6.0'
     api "com.squareup.retrofit2:retrofit:$retrofit_version"
     api "com.squareup.retrofit2:converter-gson:$retrofit_version"

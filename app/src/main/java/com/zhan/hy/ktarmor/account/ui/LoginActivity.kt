@@ -1,10 +1,10 @@
 package com.zhan.hy.ktarmor.account.ui
 
 import com.zhan.hy.ktarmor.R
+import com.zhan.hy.ktarmor.account.LoginIdlingResource
 import com.zhan.hy.ktarmor.account.contract.LoginContract
 import com.zhan.hy.ktarmor.account.model.response.LoginRsp
 import com.zhan.hy.ktarmor.account.presenter.LoginPresenter
-import com.zhan.mvp.common.Intent
 import com.zhan.mvp.ext.Toasts.toast
 import com.zhan.mvp.ext.str
 import com.zhan.mvp.mvp.MvpActivity
@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_login.*
  */
 class LoginActivity : MvpActivity<LoginContract.Presenter>(), LoginContract.View {
 
-    private var tip by Intent("hello", "!!!!")
+    val mIdlingResource by lazy { LoginIdlingResource() }
 
     override fun getLayoutId(): Int = R.layout.activity_login
 
@@ -26,12 +26,10 @@ class LoginActivity : MvpActivity<LoginContract.Presenter>(), LoginContract.View
     override fun initListener() {
         super.initListener()
 
-        toast(tip)
-
         mBtnLogin.setOnClickListener {
             mTilAccount.isErrorEnabled = false
             mTilPassword.isErrorEnabled = false
-            presenter.login(mEtAccount.str(), mEtPassword.str())
+            presenter.login(mTieAccount.str(), mTiePassword.str())
         }
     }
 
@@ -48,15 +46,18 @@ class LoginActivity : MvpActivity<LoginContract.Presenter>(), LoginContract.View
     }
 
     override fun loginSuc(loginRsp: LoginRsp) {
-        toast("登陆成功！")
+        mIdlingResource.isIdleState()
+        toast(getString(R.string.login_success))
         hideLoading()
     }
 
     override fun loginError(errorMsg: String) {
+        mIdlingResource.isIdleState()
         toast(errorMsg)
     }
 
     override fun loginFail(errorMsg: String) {
+        mIdlingResource.isIdleState()
         toast(errorMsg)
     }
 }
