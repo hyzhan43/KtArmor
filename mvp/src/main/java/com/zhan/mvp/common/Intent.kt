@@ -1,4 +1,4 @@
-package com.zhan.mvp.delegate
+package com.zhan.mvp.common
 
 import android.app.Activity
 import kotlin.properties.ReadWriteProperty

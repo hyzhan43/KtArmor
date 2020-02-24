@@ -12,6 +12,6 @@ import com.zhan.hy.ktarmor.common.bean.BaseResponse
 object LoginModel {
 
     suspend fun login(account: String, password: String): BaseResponse<LoginRsp> {
-        return ApiManager.apiService.loginAsync(account, password).await()
+        return ApiManager.apiService.loginAsync(account, password)
     }
 }

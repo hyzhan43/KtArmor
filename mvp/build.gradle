@@ -46,14 +46,12 @@ dependencies {
     api 'net.qiujuer.genius:res:2.1.1'
 
     // retrofit
-    String retrofit_version = '2.4.0'
+    String retrofit_version = '2.6.0'
     api "com.squareup.retrofit2:retrofit:$retrofit_version"
     api "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    api 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
 
     // okHttp
     String okHttp_version = '3.4.1'
-    api "com.squareup.okhttp3:okhttp:${okHttp_version}"
-    api "com.squareup.okhttp3:logging-interceptor:${okHttp_version}"
+    api "com.squareup.okhttp3:logging-interceptor:$okHttp_version"
 }
 

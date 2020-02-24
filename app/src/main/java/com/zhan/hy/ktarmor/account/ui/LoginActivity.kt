@@ -4,7 +4,7 @@ import com.zhan.hy.ktarmor.R
 import com.zhan.hy.ktarmor.account.contract.LoginContract
 import com.zhan.hy.ktarmor.account.model.response.LoginRsp
 import com.zhan.hy.ktarmor.account.presenter.LoginPresenter
-import com.zhan.mvp.delegate.Intent
+import com.zhan.mvp.common.Intent
 import com.zhan.mvp.ext.Toasts.toast
 import com.zhan.mvp.ext.str
 import com.zhan.mvp.mvp.MvpActivity

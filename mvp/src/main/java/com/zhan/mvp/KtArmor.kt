@@ -1,7 +1,7 @@
 package com.zhan.mvp
 
 import android.app.Application
-import com.zhan.mvp.delegate.Preference
+import com.zhan.mvp.common.Preference
 import com.zhan.mvp.ext.Toasts
 import com.zhan.mvp.http.RetrofitConfig
 
