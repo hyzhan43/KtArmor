@@ -1,7 +1,6 @@
 package com.zhan.hy.ktarmor.common.api
 
 import com.zhan.mvp.http.RetrofitFactory
-import com.zhan.mvp.mvp.BaseModel
 
 /**
  *  @author:  hyzhan
